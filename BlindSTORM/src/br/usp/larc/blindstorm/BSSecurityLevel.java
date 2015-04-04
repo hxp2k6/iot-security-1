@@ -1,0 +1,91 @@
+/**
+ * BSSecurityLevel
+ * 
+ * An enum specifying the Blind Storm security levels.  
+ * 
+ * Version 0.1
+ * 
+ * @author opaiva
+ * */
+package br.usp.larc.blindstorm;
+
+import br.usp.larc.blindstorm.exception.BSException;
+
+public enum BSSecurityLevel {
+	SECURITY_LEVEL_80,
+	SECURITY_LEVEL_96,
+	SECURITY_LEVEL_112,
+	SECURITY_LEVEL_128;
+
+	public static BSSecurityLevel securityLevelFromByte(byte inputByte) {
+		BSSecurityLevel result = null;
+
+		switch (inputByte) {
+			case 0x00:
+				result = SECURITY_LEVEL_80;
+				break;
+			case 0x01:
+				result = SECURITY_LEVEL_96;
+				break;
+			case 0x02:
+				result = SECURITY_LEVEL_112;
+				break;
+			case 0x03:
+				result = SECURITY_LEVEL_128;
+				break;
+			default:
+				break;
+		}
+
+		return result;
+	}
+
+	public static byte byteFromSecurityLevel(BSSecurityLevel securityLevel) {
+		byte result = 0x00;
+
+		switch (securityLevel) {
+			case SECURITY_LEVEL_80:
+				result = 0x00;
+				break;
+			case SECURITY_LEVEL_96:
+				result = 0x01;
+				break;
+			case SECURITY_LEVEL_112:
+				result = 0x02;
+				break;
+			case SECURITY_LEVEL_128:
+				result = 0x03;
+				break;
+			default:
+				break;
+		}
+
+		return result;
+	}
+
+	/**
+	 * Returns the key length in bits to achieve the security level
+	 * 
+	 * @throws BSException 
+	 * */
+	public static int securityLevelToKeyLength(BSSecurityLevel securityLevel) {
+		int result = 0;
+
+		switch (securityLevel) {
+			case SECURITY_LEVEL_80:
+				result = 158;
+				break;
+			case SECURITY_LEVEL_96:
+				result = 190;
+				break;
+			case SECURITY_LEVEL_112:
+				result = 222;
+				break;
+			case SECURITY_LEVEL_128:
+				result = 254;
+				break;
+		}
+
+		return result;
+	}
+}

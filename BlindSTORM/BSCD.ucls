@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <enumeration id="1" language="java" name="br.usp.larc.blindstorm.BSSecurityLevel" project="BlindSTORM" 
+    file="/BlindSTORM/src/br/usp/larc/blindstorm/BSSecurityLevel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="944" y="-400"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="false"/>    
+    </display>  
+  </enumeration>  
+  <class id="2" language="java" name="br.usp.larc.blindstorm.BSClient.StateVariableHolder" project="BlindSTORM" 
+    file="/BlindSTORM/src/br/usp/larc/blindstorm/BSClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1814" y="-37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="false"/>    
+    </display>  
+  </class>  
+  <enumeration id="3" language="java" name="br.usp.larc.blindstorm.BSClient.BSCLientState" project="BlindSTORM" 
+    file="/BlindSTORM/src/br/usp/larc/blindstorm/BSClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1836" y="-178"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="false"/>    
+    </display>  
+  </enumeration>  
+  <class id="4" language="java" name="br.usp.larc.blindstorm.BSIdentifiedClient" project="BlindSTORM" 
+    file="/BlindSTORM/src/br/usp/larc/blindstorm/BSIdentifiedClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1328" y="320"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="false"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="br.usp.larc.blindstorm.BSClient.ReadyVariablesHolder" project="BlindSTORM" 
+    file="/BlindSTORM/src/br/usp/larc/blindstorm/BSClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1720" y="117"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="false"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="br.usp.larc.blindstorm.BSClient.AwaitingSignVariablesHolder" project="BlindSTORM" 
+    file="/BlindSTORM/src/br/usp/larc/blindstorm/BSClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1907" y="116"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="false"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="br.usp.larc.blindstorm.BSAnonymousClient" project="BlindSTORM" 
+    file="/BlindSTORM/src/br/usp/larc/blindstorm/BSAnonymousClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1644" y="300"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="false"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="br.usp.larc.blindstorm.BSClient" project="BlindSTORM" 
+    file="/BlindSTORM/src/br/usp/larc/blindstorm/BSClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1434" y="-47"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="false"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="br.usp.larc.blindstorm.BSEntity" project="BlindSTORM" 
+    file="/BlindSTORM/src/br/usp/larc/blindstorm/BSEntity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1430" y="-400"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="false"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="br.usp.larc.blindstorm.BSBooth.BSKeySigner" project="BlindSTORM" 
+    file="/BlindSTORM/src/br/usp/larc/blindstorm/BSBooth.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="731" y="-169"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="false"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="br.usp.larc.blindstorm.BSBooth" project="BlindSTORM" 
+    file="/BlindSTORM/src/br/usp/larc/blindstorm/BSBooth.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="944" y="-168"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="false"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="br.usp.larc.blindstorm.BSUtil" project="BlindSTORM" 
+    file="/BlindSTORM/src/br/usp/larc/blindstorm/BSUtil.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="963" y="69"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="true" package="true" protected="true" private="true" static="false"/>    
+    </display>  
+  </class>  
+  <generalization id="13">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="14">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="15" name="securityLevel"/>      
+      <multiplicity id="16" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="17">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="18">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="19">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="20">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="21">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <nesting id="22">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="10"/>  
+  </nesting>  
+  <generalization id="23">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="24">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="25" name="varHolder"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="27">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <dependency id="28">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <generalization id="29">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <nesting id="30">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="2"/>  
+  </nesting>  
+  <association id="31">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="32" name="clientState"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="34">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="3"/>  
+  </nesting>  
+  <generalization id="35">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="36">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <dependency id="37">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="false"/>    
+    <operations public="true" package="true" protected="true" private="true" static="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
