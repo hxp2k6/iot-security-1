@@ -11,27 +11,22 @@ import se.sics.assertionServer.accessControl.XacmlAccessControl;
 import se.sics.assertionServer.auth.PasswordAuth;
 import se.sics.assertionServer.databaseAccess.DBConnector;
 import se.sics.assertionServer.databaseAccess.SQLConnector;
-
 import se.sics.saml.SAMLAttribute;
 import se.sics.saml.SAMLAttributeValue;
 import se.sics.saml.SAMLNameID;
 import se.sics.saml.SignatureVerifier;
 import se.sics.saml.SignedSAMLAssertion;
 import se.sics.saml.VerificationException;
-
 import se.sics.util.XMLInputParser;
 
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.lang.reflect.Method;
-
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -192,6 +187,7 @@ public class SimpleTests extends TestCase {
 	 * 
 	 * @throws SQLException 
 	 */
+	@SuppressWarnings("deprecation")
 	public void testCreateAttr() throws SQLException {	
 		HashSet<String> allowedValues = new HashSet<String>();
 		allowedValues.add("member");

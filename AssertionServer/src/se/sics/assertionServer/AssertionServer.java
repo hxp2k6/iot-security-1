@@ -37,14 +37,15 @@
 
 package se.sics.assertionServer;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import se.sics.assertionServer.AssertionServerSchemaConfiguration.ConfigurationException;
 import se.sics.assertionServer.accessControl.AccessControlModule;
 import se.sics.assertionServer.actions.AssertionServerAction;
 import se.sics.assertionServer.auth.AuthenticationModule;
 import se.sics.assertionServer.databaseAccess.DBConnector;
-
 import se.sics.saml.SAMLAttribute;
 import se.sics.saml.SAMLAttributeStatement;
 import se.sics.saml.SAMLAttributeValue;
@@ -55,14 +56,12 @@ import se.sics.saml.SAMLSigner;
 import se.sics.saml.SAMLStatement;
 import se.sics.saml.SAMLSubject;
 import se.sics.saml.SignedSAMLAssertion;
-
 import se.sics.util.XMLInputParser;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -70,10 +69,8 @@ import java.security.PrivateKey;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -98,7 +95,7 @@ public class AssertionServer {
 	/**
 	 * A logger to log events
 	 */
-	static Logger logger = Logger.getLogger(AssertionServer.class);
+	static Logger logger = LogManager.getLogger(AssertionServer.class);
 	
 	/**
 	 * The database connector used to store attribute information
