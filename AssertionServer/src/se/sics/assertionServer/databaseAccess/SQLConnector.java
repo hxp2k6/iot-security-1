@@ -39,7 +39,7 @@ public class SQLConnector implements DBConnector {
 	 * The default connection URL for the database. Here we use a 
 	 * MySQL database on port 3306.
 	 */
-	private String defaultDbUrl = "jdbc:mysql://localhost:3306";
+	private String defaultDbUrl = "jdbc:mysql://localhost:3306/";
 	
 	/**
 	 * A prepared connection.

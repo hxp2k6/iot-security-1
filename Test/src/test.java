@@ -38,7 +38,6 @@ import se.sics.saml.VerificationException;
 import se.sics.util.Indenter;
 import se.sics.util.XMLInputParser;
 
-
 public class test {
 	public static void main(String args[]) throws NoSuchAlgorithmException, 
 	SQLException, CertificateException, UnrecoverableKeyException, KeyStoreException, IOException, 
@@ -91,7 +90,8 @@ public class test {
 		AttributeDefinition ad = new AttributeDefinition(soa, id,
 				dataType, allowedValues);
 		//Create the database
-		db.init("password");
+		//db.init("password");
+		db.init("rootPwd");
 		auth.init(db);
 		//Create a new user
 		auth.newUser(ad.getSOA().getName(), "password", db);
