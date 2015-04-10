@@ -1,0 +1,15 @@
+mostrar usuários:
+
+SELECT User FROM mysql.user;
+
+-------------------------------------------------------------------------------------
+
+reset password:
+
+mysql> use mysql;
+SET PASSWORD FOR 'user-name-here'@'hostname-name-here' = PASSWORD('new-password-here');
+
+-------------------------------------------------------------------------------------
+
+CREATE USER 'saml-aa'@'localhost' IDENTIFIED BY 'password';
+

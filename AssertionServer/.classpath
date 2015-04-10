@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="resources/lib/samlAttr.jar"/>
+	<classpathentry kind="lib" path="resources/lib/xacml.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Test/lib/log4j-api-2.2.jar"/>
+	<classpathentry kind="lib" path="/Test/lib/log4j-core-2.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

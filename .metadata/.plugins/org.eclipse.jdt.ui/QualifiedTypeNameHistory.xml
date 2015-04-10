@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.swing.text.Document"/>
+<fullyQualifiedTypeName name="java.util.HashSet"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="se.sics.assertionServer.AttributeDefinition"/>
+<fullyQualifiedTypeName name="se.sics.assertionServer.RequestResult"/>
+<fullyQualifiedTypeName name="se.sics.assertionServer.AssertionRequest"/>
+<fullyQualifiedTypeName name="se.sics.assertionServer.databaseAccess.SQLConnector"/>
+<fullyQualifiedTypeName name="se.sics.assertionServer.accessControl.AccessControlModule"/>
+<fullyQualifiedTypeName name="java.security.cert.X509Certificate"/>
+<fullyQualifiedTypeName name="se.sics.assertionServer.auth.PasswordAuth"/>
+<fullyQualifiedTypeName name="se.sics.assertionServer.accessControl.BasicAccessControl"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.security.cert.CertificateFactory"/>
+<fullyQualifiedTypeName name="java.io.BufferedInputStream"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="se.sics.assertionServer.AssertionServer"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="org.w3c.dom.Document"/>
+<fullyQualifiedTypeName name="se.sics.saml.SAMLAttribute"/>
+<fullyQualifiedTypeName name="se.sics.saml.SAMLAttributeValue"/>
+<fullyQualifiedTypeName name="se.sics.saml.SignedSAMLAssertion"/>
+<fullyQualifiedTypeName name="se.sics.util.XMLInputParser"/>
+<fullyQualifiedTypeName name="se.sics.util.Indenter"/>
+<fullyQualifiedTypeName name="java.util.logging.Logger"/>
+<fullyQualifiedTypeName name="org.apache.logging.log4j.LogManager"/>
+</qualifiedTypeNameHistroy>
