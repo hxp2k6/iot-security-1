@@ -37,7 +37,9 @@
 
 package se.sics.saml;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -73,7 +75,7 @@ public class SignatureVerifier {
 	/**
 	 * The event logger
 	 */
-    static Logger logger = Logger.getLogger(SignatureVerifier.class);
+    static Logger logger = LogManager.getLogger(SignatureVerifier.class);
 
 
     /**

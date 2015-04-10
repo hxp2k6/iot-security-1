@@ -37,12 +37,12 @@
 
 package se.sics.saml;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 import org.xml.sax.SAXException;
 
 import se.sics.util.DateUtils;
@@ -51,10 +51,8 @@ import se.sics.util.Indenter;
 import se.sics.util.XML2String;
 
 import java.io.IOException;
-
 import java.security.InvalidAlgorithmParameterException;
 import java.security.NoSuchAlgorithmException;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -81,7 +79,7 @@ public class SignedSAMLAssertion {
 	/**
 	 * A logger for logging events.
 	 */
-    static Logger logger = Logger.getLogger(SignedSAMLAssertion.class);
+    static Logger logger = LogManager.getLogger(SignedSAMLAssertion.class);
 
     /**
      * The identifier of the assertion

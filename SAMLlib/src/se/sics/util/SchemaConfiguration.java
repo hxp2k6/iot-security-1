@@ -43,7 +43,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 
 /**
@@ -54,7 +55,7 @@ import org.apache.log4j.Logger;
  * @author Erik Rissanen
  */
 public class SchemaConfiguration {
-    static Logger logger = Logger.getLogger(SchemaConfiguration.class);
+    static Logger logger = LogManager.getLogger(SchemaConfiguration.class);
 
     private static final long serialVersionUID = 1L;
 

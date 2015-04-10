@@ -11,5 +11,28 @@ SET PASSWORD FOR 'user-name-here'@'hostname-name-here' = PASSWORD('new-password-
 
 -------------------------------------------------------------------------------------
 
+mostrar database:
+
+SHOW DATABASES
+
+
+-------------------------------------------------------------------------------------
+
+create user:
+
 CREATE USER 'saml-aa'@'localhost' IDENTIFIED BY 'password';
+
+-------------------------------------------------------------------------------------
+
+drop db:
+
+DROP {DATABASE | SCHEMA} [IF EXISTS] db_name
+
+-------------------------------------------------------------------------------------
+
+grant privileges:
+
+GRANT ALL ON saml_aa.* TO 'saml-aa'@'localhost' IDENTIFIED BY 'password';
+
+
 

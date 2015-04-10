@@ -91,6 +91,7 @@ public class test {
 				dataType, allowedValues);
 		//Create the database
 		//db.init("password");
+		
 		db.init("rootPwd");
 		auth.init(db);
 		//Create a new user
@@ -146,6 +147,6 @@ public class test {
 		}
 		//Delete a user
 		auth.deleteUser(ad.getSOA().getName(), db);
-
 	}
 }
+
