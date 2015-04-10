@@ -2,20 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
-		<item value="240" key="DIALOG_Y_ORIGIN"/>
+		<item value="395" key="DIALOG_Y_ORIGIN"/>
+		<item value="1102" key="DIALOG_X_ORIGIN"/>
 		<item value="381" key="DIALOG_HEIGHT"/>
-		<item value="915" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="parsed" key="selection"/>
+		<item value="apache" key="selection"/>
 		<list key="findhistory">
-			<item value="parsed"/>
+			<item value="apache"/>
+			<item value="logger"/>
+			<item value="test"/>
+			<item value="defaultdburl"/>
+			<item value="rootpwd"/>
+			<item value="Logger"/>
+			<item value="dbName"/>
+			<item value="saml_aa"/>
 		</list>
 		<list key="replacehistory">
 		</list>

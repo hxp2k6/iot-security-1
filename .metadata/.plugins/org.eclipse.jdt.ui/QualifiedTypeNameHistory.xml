@@ -25,5 +25,8 @@
 <fullyQualifiedTypeName name="se.sics.util.XMLInputParser"/>
 <fullyQualifiedTypeName name="se.sics.util.Indenter"/>
 <fullyQualifiedTypeName name="java.util.logging.Logger"/>
+<fullyQualifiedTypeName name="java.net.URI"/>
+<fullyQualifiedTypeName name="javax.print.DocFlavor.URL"/>
 <fullyQualifiedTypeName name="org.apache.logging.log4j.LogManager"/>
+<fullyQualifiedTypeName name="org.apache.logging.log4j.core.util.Assert"/>
 </qualifiedTypeNameHistroy>
