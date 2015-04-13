@@ -13,16 +13,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="apache" key="selection"/>
+		<item value="" key="selection"/>
 		<list key="findhistory">
-			<item value="apache"/>
+			<item value="org/apache/log4j/Logger"/>
+			<item value="org.apache.log4j.Logger"/>
+			<item value="sas"/>
 			<item value="logger"/>
-			<item value="test"/>
-			<item value="defaultdburl"/>
-			<item value="rootpwd"/>
-			<item value="Logger"/>
-			<item value="dbName"/>
-			<item value="saml_aa"/>
+			<item value="common"/>
+			<item value="GET"/>
+			<item value="post"/>
+			<item value="javax"/>
 		</list>
 		<list key="replacehistory">
 		</list>

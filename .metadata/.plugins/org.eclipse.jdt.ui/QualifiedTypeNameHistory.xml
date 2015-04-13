@@ -19,14 +19,16 @@
 <fullyQualifiedTypeName name="se.sics.assertionServer.AssertionServer"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="org.w3c.dom.Document"/>
-<fullyQualifiedTypeName name="se.sics.saml.SAMLAttribute"/>
-<fullyQualifiedTypeName name="se.sics.saml.SAMLAttributeValue"/>
-<fullyQualifiedTypeName name="se.sics.saml.SignedSAMLAssertion"/>
-<fullyQualifiedTypeName name="se.sics.util.XMLInputParser"/>
-<fullyQualifiedTypeName name="se.sics.util.Indenter"/>
 <fullyQualifiedTypeName name="java.util.logging.Logger"/>
 <fullyQualifiedTypeName name="java.net.URI"/>
 <fullyQualifiedTypeName name="javax.print.DocFlavor.URL"/>
-<fullyQualifiedTypeName name="org.apache.logging.log4j.LogManager"/>
 <fullyQualifiedTypeName name="org.apache.logging.log4j.core.util.Assert"/>
+<fullyQualifiedTypeName name="se.sics.util.XMLInputParser"/>
+<fullyQualifiedTypeName name="se.sics.saml.SignedSAMLAssertion"/>
+<fullyQualifiedTypeName name="se.sics.util.Indenter"/>
+<fullyQualifiedTypeName name="se.sics.saml.SAMLAttribute"/>
+<fullyQualifiedTypeName name="se.sics.saml.SAMLAttributeValue"/>
+<fullyQualifiedTypeName name="se.sics.saml.SAMLNameID"/>
+<fullyQualifiedTypeName name="se.sics.saml.VerificationException"/>
+<fullyQualifiedTypeName name="org.apache.logging.log4j.LogManager"/>
 </qualifiedTypeNameHistroy>

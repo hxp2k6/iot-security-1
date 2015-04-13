@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item value="2" key="TypeHierarchyViewPart.hierarchyview"/>
 	<item value="C:\Users\Marcio\Downloads\apache-log4j-1.2.17" key="org.eclipse.jdt.ui.lastextjar"/>
+	<item value="3" key="TypeHierarchyViewPart.orientation"/>
+	<item value="false" key="TypeHierarchyViewPart.qualifiednames"/>
+	<item value="false" key="TypeHierarchyViewPart.linkeditors"/>
 	<item value="C:\Users\Marcio\iot-security\AssertionServer" key="org.eclipse.jdt.ui.last.external.project"/>
 	<section name="OptionalMessageDialog.hide.">
 		<item value="true" key="org.eclipse.jdt.ui.typecomment.deprecated"/>

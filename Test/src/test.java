@@ -38,6 +38,7 @@ import se.sics.saml.VerificationException;
 import se.sics.util.Indenter;
 import se.sics.util.XMLInputParser;
 
+
 public class test {
 	public static void main(String args[]) throws NoSuchAlgorithmException, 
 	SQLException, CertificateException, UnrecoverableKeyException, KeyStoreException, IOException, 
@@ -136,6 +137,9 @@ public class test {
 		// Success
 		//}
 		//Delete an attribute value
+		
+		System.out.println("assertionXML");
+		
 		result = sas.removeAttributeValue(subject, soa, valueAdmin);
 		if (!result.success()) {
 			System.out.println(result.getFailureReasons());

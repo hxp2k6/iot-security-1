@@ -39,7 +39,6 @@ package se.sics.saml;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -84,6 +83,7 @@ public class SignedSAMLAssertion {
     /**
      * The identifier of the assertion
      */
+    
     private final  String id;
     
     /**

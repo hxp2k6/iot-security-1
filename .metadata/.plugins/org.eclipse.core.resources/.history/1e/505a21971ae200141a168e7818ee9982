@@ -1,0 +1,155 @@
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+
+import javax.xml.crypto.MarshalException;
+import javax.xml.crypto.dsig.XMLSignatureException;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
+
+import se.sics.assertionServer.AssertionRequest;
+import se.sics.assertionServer.AssertionServer;
+import se.sics.assertionServer.AssertionServerSchemaConfiguration.ConfigurationException;
+import se.sics.assertionServer.AttributeDefinition;
+import se.sics.assertionServer.RequestResult;
+import se.sics.assertionServer.accessControl.AccessControlModule;
+import se.sics.assertionServer.accessControl.BasicAccessControl;
+import se.sics.assertionServer.auth.PasswordAuth;
+import se.sics.assertionServer.databaseAccess.SQLConnector;
+import se.sics.saml.SAMLAttribute;
+import se.sics.saml.SAMLAttributeValue;
+import se.sics.saml.SAMLNameID;
+import se.sics.saml.SignedSAMLAssertion;
+import se.sics.saml.VerificationException;
+import se.sics.util.Indenter;
+import se.sics.util.XMLInputParser;
+
+public class test {
+	public static void main(String args[]) throws NoSuchAlgorithmException, 
+	SQLException, CertificateException, UnrecoverableKeyException, KeyStoreException, IOException, 
+	ConfigurationException, ParserConfigurationException, SAXException, VerificationException, MarshalException, XMLSignatureException{
+		//Use default values for connecting to the database
+		SQLConnector db =  new SQLConnector(null, null, null);
+		AccessControlModule pdp = new BasicAccessControl();
+		//Use the default hash algorithm on the passwords
+		PasswordAuth auth = new PasswordAuth(null);
+		List<X509Certificate> certs = new ArrayList<X509Certificate>();
+		File rootCertFile = new File("resources/testData/Certificates/cacert.pem");
+		CertificateFactory certFact = CertificateFactory.getInstance("X.509");
+		BufferedInputStream bis = new BufferedInputStream(
+				new FileInputStream(rootCertFile));
+		X509Certificate rootCert
+		= (X509Certificate) certFact.generateCertificate(bis);
+		certs.add(rootCert);
+		AssertionServer sas = new AssertionServer(db, pdp, auth,
+				"resources/testData/Certificates/aserver.p12",
+				"password", certs, 1);
+		HashSet<String> allowedValues = new HashSet<String>();
+		allowedValues.add("member");
+		allowedValues.add("administrator");
+		SAMLNameID subject = new SAMLNameID("ludwig@sics.se");
+		String soaStr = "testSOA";
+		SAMLNameID soa = new SAMLNameID(soaStr);
+		String id = "testID";
+		String dataType = SAMLAttribute.xmlStringId;
+		
+		//Signalizes start of test
+		System.out.println("Teste");
+		
+		//Add required XML-attributes for the SAML-XACML profile
+		HashMap<String, String> otherXMLAttrs = new HashMap<String, String>();
+		otherXMLAttrs.put("xmlns:" + SAMLAttribute.xacmlprofNSPrefix,
+				SAMLAttribute.xacmlprofNS);
+		otherXMLAttrs.put(SAMLAttribute.xacmlprofNSPrefix + ":" +
+				"DataType", dataType);
+		ArrayList<SAMLAttributeValue> values
+		= new ArrayList<SAMLAttributeValue>();
+		values.add(new SAMLAttributeValue(null, "member"));
+		SAMLAttribute valueMember = new SAMLAttribute(
+				id, SAMLAttribute.xacmlNameFormat, null,
+				otherXMLAttrs, values);
+		values.clear();
+		values.add(new SAMLAttributeValue(null, "administrator"));
+		SAMLAttribute valueAdmin = new SAMLAttribute(
+				id, SAMLAttribute.xacmlNameFormat, null,
+				otherXMLAttrs, values);
+		AttributeDefinition ad = new AttributeDefinition(soa, id,
+				dataType, allowedValues);
+		//Create the database
+		//db.init("password");
+		
+		db.init("rootPwd");
+		auth.init(db);
+		//Create a new user
+		auth.newUser(ad.getSOA().getName(), "password", db);
+		//Authenticate the user
+		RequestResult result = sas.connectUser(ad.getSOA(), "password");
+		if (!result.success()) {
+			System.out.println(result.getFailureReasons());
+		}
+		//Create an attribute
+		result = sas.createAttribute(ad);
+		if (!result.success()) {
+			System.out.println("..." + result.getFailureReasons());
+		}
+		//Adding an attribute value
+		result = sas.addAttributeValue(subject, soa, valueMember);
+		if (!result.success()) {
+			System.out.println("..." + result.getFailureReasons());
+		}
+		//Update an attribute value
+		result = sas.updateAttributeValue(subject, soa, valueMember,
+				"administrator");
+		if (!result.success()) {
+			System.out.println("..." + result.getFailureReasons());
+		}
+		//Get assertion
+		AssertionRequest request = new AssertionRequest(subject, soa, valueAdmin);
+		result = sas.getAssertions(request);
+		SignedSAMLAssertion assertion = result.getResults().get(0);
+		String assertionXML = assertion.toString(new Indenter());
+		System.out.println(assertionXML);
+		//Parse an assertion
+		XMLInputParser parser = new XMLInputParser(null, null);
+		Document doc = parser.parseDocument(assertionXML);
+		SignedSAMLAssertion parsedAssertion
+		= SignedSAMLAssertion.getInstance(doc.getDocumentElement());
+		//Test validity of conditions
+		//if (!parsedAssertion.getConditions().checkValidityIntervall()) {
+		//if (!parsedAssertion.getConditions().checkValidityIntervall()){
+		// Failed
+		//} else {
+		// Success
+		//}
+		//Delete an attribute value
+		
+		System.out.println("assertionXML");
+		
+		result = sas.removeAttributeValue(subject, soa, valueAdmin);
+		if (!result.success()) {
+			System.out.println(result.getFailureReasons());
+		}
+		//Delete an attribute
+		result = sas.deleteAttribute(ad);
+		if (!result.success()) {
+			System.out.println("..." + result.getFailureReasons());
+		}
+		//Delete a user
+		auth.deleteUser(ad.getSOA().getName(), db);
+	}
+}
+
