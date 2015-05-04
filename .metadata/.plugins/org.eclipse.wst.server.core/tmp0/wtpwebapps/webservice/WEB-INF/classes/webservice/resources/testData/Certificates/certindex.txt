@@ -1,0 +1,1 @@
+V	120526131001Z		100001	unknown	/C=SE/ST=Sk\xC3\xA5ne/O=SICS AB/OU=Secure Systems Group/CN=AssertionServer2

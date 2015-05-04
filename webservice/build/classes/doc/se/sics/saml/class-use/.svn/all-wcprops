@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use
+END
+SignedSAMLAssertion.html
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SignedSAMLAssertion.html
+END
+SAMLSigner.html
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SAMLSigner.html
+END
+SAMLSubjectConfirmation.html
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SAMLSubjectConfirmation.html
+END
+VerificationException.html
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/VerificationException.html
+END
+SAMLNameID.html
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SAMLNameID.html
+END
+SAMLAttribute.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SAMLAttribute.html
+END
+SignatureVerifier.html
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SignatureVerifier.html
+END
+SAMLCondition.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SAMLCondition.html
+END
+SAMLID.html
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SAMLID.html
+END
+SAMLConditions.html
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SAMLConditions.html
+END
+SAMLAttributeValue.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SAMLAttributeValue.html
+END
+SAMLStatement.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SAMLStatement.html
+END
+SAMLIDFactory.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SAMLIDFactory.html
+END
+SAMLOneTimeUse.html
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SAMLOneTimeUse.html
+END
+SAMLAttributeStatement.html
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SAMLAttributeStatement.html
+END
+SAMLSubject.html
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SAMLSubject.html
+END
+SAMLSubjectConfirmationData.html
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/saml/class-use/SAMLSubjectConfirmationData.html
+END

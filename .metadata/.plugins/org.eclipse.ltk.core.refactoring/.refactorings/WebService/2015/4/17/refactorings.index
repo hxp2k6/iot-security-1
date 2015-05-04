@@ -1,0 +1,53 @@
+1429470833464	Delete element
+1429471745647	Delete element
+1429471746910	Delete element
+1429472561132	Rename package 'AssertionServerService.model'
+1429472613767	Rename package 'WebService'
+1429472944503	Rename package 'webservice'
+1429621881150	Delete element
+1429625456539	Move compilation unit
+1429625563026	Copy compilation unit
+1429625566161	Delete element
+1429625745530	Delete element
+1429630278702	Delete element
+1429630720668	Delete element
+1429836860651	Rename package 'src.se.sics.assertionServer.actions'
+1429836909570	Rename package 'src.se.sics.assertionServer.auth'
+1429836922170	Rename package 'src.se.sics.assertionServer.databaseAccess'
+1429836928741	Rename package 'src.se.sics.assertionServer.tests'
+1429837949888	Rename package 'src.my.test'
+1429865480833	Rename package 'src.se.sics.saml'
+1429865487943	Rename package 'src.se.sics.saml.tests'
+1429865495490	Rename package 'src.se.sics.util'
+1429869636504	Move package
+1429869811152	Move package
+1429869814433	Move package
+1429869828105	Rename package 'resources.testData.Certificates'
+1429869834605	Rename package 'resources.testData.Policies'
+1429869959385	Delete element
+1429870017604	Move package
+1429870023714	Move package
+1429870080308	Move package
+1429870263371	Delete element
+1429870367484	Delete element
+1429870375578	Delete element
+1429870434454	Delete element
+1429870566572	Delete element
+1429870572916	Delete elements
+1429870583807	Delete element
+1429870696559	Delete element
+1429892247825	Delete element
+1429892250805	Delete element
+1429892664977	Move folder
+1429892753297	Delete element
+1429892784226	Rename package 'webservice.model.resources.testData.Certificates'
+1429892794269	Rename package 'webservice.model.resources.testData.Policies'
+1429892932671	Rename package 'resources.testData.Policies'
+1429892943713	Rename package 'resources.testData.Certificates'
+1429892985124	Rename package 'webservic.model.resources.testData.Certificates'
+1429896685981	Rename package 'webservice.model.resources.testData.Certificates'
+1429896692885	Rename package 'webservice.model.resources.testData.Policies'
+1429900051746	Delete element
+1429900211035	Delete element
+1429904526284	Rename package 'schema'
+1429904545533	Rename package 'websrevice.resources.schema'
