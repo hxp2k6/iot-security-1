@@ -1,0 +1,152 @@
+package br.usp.larc.bnpairings;
+
+/**
+ * BNCurve.java
+ *
+ * Barreto-Naehrig (BN) pairing-friendly elliptic curves.
+ *
+ * Copyright (C) Paulo S. L. M. Barreto and Geovandro C. C. F. Pereira.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
+import br.usp.larc.pseudojava.BigInteger;
+import br.usp.larc.pseudojava.SecureRandom;
+
+public class BNCurve {
+
+    /**
+     * BN parameters (singleton)
+     */
+    BNParams bn;
+
+    /**
+     * Coefficient of the elliptic curve equation
+     */
+    private BigInteger b;
+
+    /**
+     * The base point of large prime order n
+     */
+    private BNPoint G;
+
+    /**
+     * Prime curve order
+     */
+    private BigInteger n;
+
+    /**
+     * The point at infinity
+     */
+    public BNPoint infinity;
+
+    /**
+     * Build the standard BN curve BN(u): y^2 = x^3 + b.
+     *
+     * @param   bn  BN parameters of the curve
+     *
+     * @return  the desired curve, or null if the given index does not define suitable parameters
+     */
+    public BNCurve(BNParams bn) {
+        this.bn = bn;
+        b = (bn.b == 3) ? BNParams._3 : BNParams._2; // standard curve
+        infinity = new BNPoint(this); // caveat: must be set *after* p but *before* G!
+        G = (bn.b == 3) ? new BNPoint(this, BNParams._1, BNParams._2) : new BNPoint(this, BNParams._1.negate(), BNParams._1); // standard curve
+        n = bn.n;
+        /*
+        System.out.println("G = " + G);
+        System.out.println("n*G = " + G.multiply(n));
+        //*/
+        //assert (G.multiply(bn.n).isZero());                
+    }
+
+    /**
+     * Get a random nonzero point on this curve, given a fixed base point.
+     *
+     * @param   rand    a cryptographically strong PRNG
+     *
+     * @return  a random nonzero point on this curve
+     */
+    public BNPoint pointFactory(SecureRandom rand) {
+        BigInteger x, y;
+        do {
+            x = new BigInteger(2*bn.p.bitLength(), rand).mod(bn.p);
+            y = bn.sqrt(x.multiply(x).multiply(x).add(b));
+        } while (y == null);
+        return new BNPoint(this, x, y);
+    }
+
+    public BNParams getCurveParams(){
+        return bn;
+    }
+
+    public BigInteger getOrder(){
+        return n;
+    }
+
+    public BigInteger getCurveCoefficient(){
+        return b;
+    }
+
+    public BNPoint getCurveGenerator(){
+        return G;
+    }
+
+    /**
+     * Check whether this curve contains a given point
+     * (i.e. whether that point satisfies the curve equation)
+     *
+     * @param   P   the point whose pertinence or not to this curve is to be determined
+     *
+     * @return  true if this curve contains P, otherwise false
+     */
+    public boolean contains(BNPoint P) {
+        if (P.E != this) {
+            return false;
+        }
+        // check the projective equation y^2 = x^3 + b*z^6,
+        // i.e. x*x^2 + b*z^2*(z^2)^2 - y^2 = 0
+        // (the computation below never uses intermediate values larger than 3p^2)
+        BigInteger
+            x  = P.x,
+            y  = P.y,
+            z  = P.z,
+            x2 = x.multiply(x).mod(bn.p),
+            z2 = z.multiply(z).mod(bn.p),
+            z4 = z2.multiply(z2).mod(bn.p),
+            br = b.multiply(z2).mod(bn.p);
+        return x.multiply(x2).add(br.multiply(z4)).subtract(y.multiply(y)).mod(bn.p).signum() == 0;
+    }
+
+    /*
+    public BNPoint kG(BigInteger k) {
+        k = k.mod(bn.n);
+        BNPoint A = infinity;
+        for (int i = 0, w = 0; i < pp16G.length; i++, w >>>= 4) {
+            if ((i & 7) == 0) {
+                w = k.intValue();
+                k = k.shiftRight(32);
+            }
+            A = A.add(pp16G[i][w & 0xf]);
+        }
+        return A;
+    }
+    //*/
+
+    public String toString() {
+        return "BN(" + bn.u + "): y^2 = x^3 + " + b;
+    }
+    
+}

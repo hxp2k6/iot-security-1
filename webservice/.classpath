@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="AssertionServer"/>
+	<classpathentry kind="src" path="SAMLlib"/>
+	<classpathentry kind="src" path="Test"/>
+	<classpathentry kind="src" path="AssertionServerControl"/>
+	<classpathentry kind="src" path="lib"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="lib/xacml.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-api-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-core-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.7.12.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.7.12.jar"/>
+	<classpathentry kind="lib" path="Test/lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-bundle-1.19.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

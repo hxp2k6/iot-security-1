@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/util/class-use
+END
+Indenter.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/util/class-use/Indenter.html
+END
+X509KeySelector.html
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/util/class-use/X509KeySelector.html
+END
+IdGenerator.html
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/util/class-use/IdGenerator.html
+END
+AuthenticationException.html
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/util/class-use/AuthenticationException.html
+END
+SchemaConfiguration.html
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/util/class-use/SchemaConfiguration.html
+END
+DateUtils.html
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/util/class-use/DateUtils.html
+END
+SchemaConfiguration.ConfigurationException.html
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/util/class-use/SchemaConfiguration.ConfigurationException.html
+END
+XMLInputParser.html
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/SWiN/!svn/ver/80/Code/SamlLib/doc/se/sics/util/class-use/XMLInputParser.html
+END

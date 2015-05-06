@@ -1,0 +1,17 @@
+package webservice.model;
+
+import javax.ws.rs.ext.Provider;
+
+import com.sun.jersey.api.model.AbstractResourceModelContext;
+import com.sun.jersey.api.model.AbstractResourceModelListener;
+
+@Provider
+public class Listener implements AbstractResourceModelListener {
+
+
+	@Override
+	public void onLoaded(AbstractResourceModelContext arg0) {
+		System.out.println("##### resource model initiated");
+		
+	}
+}
