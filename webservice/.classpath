@@ -6,6 +6,7 @@
 	<classpathentry kind="src" path="Test"/>
 	<classpathentry kind="src" path="AssertionServerControl"/>
 	<classpathentry kind="src" path="lib"/>
+	<classpathentry kind="src" path="JSON"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="lib/xacml.jar"/>

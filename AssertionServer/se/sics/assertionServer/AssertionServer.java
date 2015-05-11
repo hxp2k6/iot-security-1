@@ -57,6 +57,8 @@ import se.sics.saml.SAMLStatement;
 import se.sics.saml.SAMLSubject;
 import se.sics.saml.SignedSAMLAssertion;
 import se.sics.util.XMLInputParser;
+import webservice.model.JSONAssertion;
+import webservice.model.JSONRequestResult;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -624,7 +626,7 @@ public class AssertionServer {
 	 * @param request  the assertion request
 	 * @return  the result of the request
 	 */
-	public RequestResult getAssertions(AssertionRequest request) {
+	public JSONRequestResult getAssertions(AssertionRequest request) {
 		//1. Check permissions
 		SAMLAttribute attr = request.getRequestedAttr();
 		Set<AttributeDefinition> target = new HashSet<AttributeDefinition>();
@@ -635,7 +637,7 @@ public class AssertionServer {
 		if (attr.getAttributeValues().size() > 1) {
 			logger.error("More than one value parameter found while querying" 
 					+ " for an assertion");
-			return new RequestResult(
+			return new JSONRequestResult(
 					"Cannot search several values in one getAssertion command");
 		}
 		
@@ -655,7 +657,7 @@ public class AssertionServer {
 					+ attr.getName() + "("
 					+ dataType + ") = '"
 					+ ((value==null) ? "any value" : value) + "'");
-			return new RequestResult(
+			return new JSONRequestResult(
 					"Permission to query attribute value denied");
 		}
 		
@@ -678,7 +680,7 @@ public class AssertionServer {
 		} catch (SQLException e) {
 			logger.error("Error while querying attribute value (step 2): " 
 					+ e.getMessage());
-			return new RequestResult(e.getMessage());
+			return new JSONRequestResult(e.getMessage());
 		}
 		
 		
@@ -705,18 +707,20 @@ public class AssertionServer {
 		List<SAMLCondition> conditions = Collections.emptyList();
 		SAMLConditions conditionsE = new SAMLConditions(now,
 				notOnOrAfter, conditions);
-		SignedSAMLAssertion assertion = null;
+		//SignedSAMLAssertion assertion = null;
+		JSONAssertion assertion = null;
 		try {
-			assertion = new SignedSAMLAssertion(request.getIssuer(), subject, 
+			assertion = new JSONAssertion(request.getIssuer(), subject, 
 					conditionsE, statements, this.signer);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			return new RequestResult("Error while creating assertions " 
+			//return new RequestResult("Error while creating assertions " 
+			return new JSONRequestResult("Error while creating assertions " 
 					+"(step 3): " + e.getMessage());
 		}
-        List<SignedSAMLAssertion> assertions 
-        	= new ArrayList<SignedSAMLAssertion>();
+        List<JSONAssertion> assertions 
+        	= new ArrayList<JSONAssertion>();
         assertions.add(assertion);
-		return new RequestResult(assertions);
+		return new JSONRequestResult(assertions);
 	}
 }

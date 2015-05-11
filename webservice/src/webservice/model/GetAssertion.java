@@ -23,30 +23,36 @@ import se.sics.saml.VerificationException;
 import assertionserver.control.AssertionServerController;
 
 
-@XmlRootElement
+//@XmlRootElement
 @Path("/assertion")
 public class GetAssertion {
 	
-	@GET
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public String getXML() throws UnrecoverableKeyException, NoSuchAlgorithmException, CertificateException, 
-	KeyStoreException, SQLException, IOException, ConfigurationException, ParserConfigurationException, 
-	SAXException, VerificationException, MarshalException, XMLSignatureException{
-		AssertionServerController assertionServerController = new AssertionServerController();
-		assertionServerController.init();
-		String assertion = assertionServerController.getAssertion();
-		//String assertion = "<xml>teste primeiro xml no assertion</xml>";
-		return assertion;
-	}
+//	@GET
+//	//@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+//	@Produces(MediaType.APPLICATION_XML)
+//	public String getXML() throws UnrecoverableKeyException, NoSuchAlgorithmException, CertificateException, 
+//	KeyStoreException, SQLException, IOException, ConfigurationException, ParserConfigurationException, 
+//	SAXException, VerificationException, MarshalException, XMLSignatureException{
+//		AssertionServerController assertionServerController = new AssertionServerController();
+//		assertionServerController.init();
+//		//String assertion = assertionServerController.getAssertion();
+//		//String assertion = "<xml>teste primeiro xml no assertion</xml>";
+//		//String assertion = "{\"singer\":\"Metallica\",\"title\":\"Enter Sandman\"}";
+//		return assertion;
+//	}
 	
 	@GET
-	@Produces({ MediaType.TEXT_XML })
+	//@Produces("text/plain")
+	@Produces(MediaType.APPLICATION_JSON)
+	//@Produces({ MediaType.TEXT_XML })
 	public String getHTML() throws UnrecoverableKeyException, NoSuchAlgorithmException, CertificateException, 
 	KeyStoreException, SQLException, IOException, ConfigurationException, ParserConfigurationException, SAXException, 
 	VerificationException, MarshalException, XMLSignatureException {
 		AssertionServerController assertionServerController = new AssertionServerController();
+		assertionServerController.init();
 		String assertion = assertionServerController.getAssertion();
 		//String assertion = "<xml>teste segundo xml no assertion</xml>";
+		//String assertion = "{\"singer\":\"Plastica\",\"title\":\"Enter Sandman\"}";
 		return assertion;
 	}
 }

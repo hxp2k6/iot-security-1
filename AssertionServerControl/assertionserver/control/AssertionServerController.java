@@ -26,6 +26,8 @@ import se.sics.saml.SAMLNameID;
 import se.sics.saml.SignedSAMLAssertion;
 import se.sics.saml.VerificationException;
 import se.sics.util.Indenter;
+import webservice.model.JSONAssertion;
+import webservice.model.JSONRequestResult;
 
 public class AssertionServerController{
 	
@@ -54,8 +56,8 @@ public class AssertionServerController{
 				id, SAMLAttribute.xacmlNameFormat, null,
 				otherXMLAttrs, values);
 		AssertionRequest request = new AssertionRequest(subject, soa, valueAdmin);
-		RequestResult result = sas.getAssertions(request);
-		SignedSAMLAssertion assertion = result.getResults().get(0);
+		JSONRequestResult result = sas.getAssertions(request);
+		JSONAssertion assertion = result.getResults().get(0);
 		assertionXML = assertion.toString(new Indenter());
 	}
 	

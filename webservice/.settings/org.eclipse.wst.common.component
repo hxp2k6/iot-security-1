@@ -4,6 +4,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/lib"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/AssertionServer"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/JSON"/>
         <property name="context-root" value="webservice"/>
         <property name="java-output-path" value="/webservice/build/classes"/>
     </wb-module>

@@ -23,6 +23,7 @@ import javax.xml.crypto.MarshalException;
 import javax.xml.crypto.dsig.XMLSignatureException;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -180,15 +181,19 @@ public class ServletContextClass implements ServletContextListener {
 		}
 		//Get assertion
 		AssertionRequest request = new AssertionRequest(subject, soa, valueAdmin);
-		result = sas.getAssertions(request);
-		SignedSAMLAssertion assertion = result.getResults().get(0);
-		String assertionXML = assertion.toString(new Indenter());
-		System.out.println(assertionXML);
+		JSONRequestResult jsonresult;
+		jsonresult = sas.getAssertions(request);
+		JSONAssertion assertion = jsonresult.getResults().get(0);
+		JSONObject json = assertion.getJSON();
+		String assertionJSON = json.toString();
+		
+		//String assertionXML = assertion.toString(new Indenter());
+		System.out.println(assertionJSON);
 		//Parse an assertion
-		XMLInputParser parser = new XMLInputParser(null, null);
-		Document doc = parser.parseDocument(assertionXML);
-		SignedSAMLAssertion parsedAssertion
-		= SignedSAMLAssertion.getInstance(doc.getDocumentElement());
+		//XMLInputParser parser = new XMLInputParser(null, null);
+		//Document doc = parser.parseDocument(assertionXML);
+		//JSONAssertion parsedAssertion
+		//= JSONAssertion.getInstance(doc.getDocumentElement());
 		//Test validity of conditions
 		//if (!parsedAssertion.getConditions().checkValidityIntervall()) {
 		//if (!parsedAssertion.getConditions().checkValidityIntervall()){
