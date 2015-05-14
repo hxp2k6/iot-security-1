@@ -334,7 +334,7 @@ public class JSONAssertion {
      * @param in  An indenter for correct XML indentation
      * @return  the xml encoded string representation of this Assertion.
      */
-    public String toString(Indenter in) {
+    /*public String toString(Indenter in) {
     	in.in();
     	String issueInstantStr = DateUtils.toString(this.issueInstant);
     	String issuerStr = this.issuer.getName();
@@ -375,7 +375,7 @@ public class JSONAssertion {
         //}
         //assertion += "</saml:Assertion>";   
         return assertion;
-    }
+    }*/
     
     public JSONObject getJSON(){
     	JSONObject json = new JSONObject();

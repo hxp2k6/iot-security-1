@@ -11,6 +11,8 @@ import android.widget.EditText;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -65,7 +67,7 @@ public class MyActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    public void makeRequest(View view) throws IOException {
+    public void makeRequest(View view) throws IOException, JSONException {
         Intent intent = new Intent(this, DisplayMessageActivity.class);
         //EditText editText = (EditText) findViewById(R.id.edit_message);
         //String message = editText.getText().toString();
@@ -73,13 +75,51 @@ public class MyActivity extends ActionBarActivity {
 
         URL url = new URL("http://192.168.1.48:8080/webservice/rest/assertion/");
 
-        String message = null;
+        String assertion = null;
         try {
-            message = new AssertionGetter().execute(url).get();
+            assertion = new AssertionGetter().execute(url).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
+        }
+
+        //Cria o JSON
+        /*JSONObject json = new JSONObject();
+        String issueInstantStr = "2015-05-12T10:20:04Z";
+        String issuerStr = "testSOA";
+        try{
+            json.put("ID", "BRcitizen");
+            json.put("II", issueInstantStr);
+            json.put("IS", issuerStr);
+            json.put("SK", "");
+
+            JSONObject jsonConditions = new JSONObject();
+
+            jsonConditions.put("NB", "2015-05-12T10:20:04Z");
+            jsonConditions.put("NA", "2015-05-13T10:20:04Z");
+            JSONObject jsonObligations = new JSONObject();
+            jsonObligations.put("OB:", jsonConditions);
+            json.put("ST", jsonObligations);
+            json.put("ACT", "GET");
+            json.put("RES", "coap://ip");
+        }
+        catch (JSONException e){
+            System.out.println("hue");
+        }*/
+
+        //Parse JSON
+        JSONObject json = new JSONObject(assertion);
+        String message = "";
+        try {
+            message = "ID " + json.get("ID") + "/n";
+            message += "II " + json.get("II") + "/n";
+            message += "SK " + json.get("SK") + "/n";
+            message += "NA " + json.get("NA") + "/n";
+            message += "NB " + json.get("NB") + "/n";
+        }
+        catch(JSONException e){
+            System.out.println("hue2");
         }
 
         //String message = AssertionGetter.get();

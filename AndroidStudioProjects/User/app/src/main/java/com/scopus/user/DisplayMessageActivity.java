@@ -10,6 +10,9 @@ import android.widget.TextView;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 public class DisplayMessageActivity extends ActionBarActivity {
 
@@ -20,6 +23,7 @@ public class DisplayMessageActivity extends ActionBarActivity {
         // Get the message from the intent
         Intent intent = getIntent();
         String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
+
 
         // Create the text view
         //TextView textView = new TextView(this);

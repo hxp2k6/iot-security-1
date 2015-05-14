@@ -58,7 +58,8 @@ public class AssertionServerController{
 		AssertionRequest request = new AssertionRequest(subject, soa, valueAdmin);
 		JSONRequestResult result = sas.getAssertions(request);
 		JSONAssertion assertion = result.getResults().get(0);
-		assertionXML = assertion.toString(new Indenter());
+		//assertionXML = assertion.toString(new Indenter());
+		assertionXML = assertion.getJSON().toString();
 	}
 	
 	public String getAssertion(){
