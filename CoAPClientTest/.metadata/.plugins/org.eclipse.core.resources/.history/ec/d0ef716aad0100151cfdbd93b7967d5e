@@ -1,0 +1,17 @@
+import org.eclipse.californium.core.coap.CoAP.Code;
+import org.eclipse.californium.core.coap.Request;
+import org.eclipse.californium.core.coap.Response;
+import org.eclipse.californium.core.network.Endpoint;
+import org.eclipse.californium.core.network.EndpointManager;
+ 	
+public class MyTest{
+// list to the UDP post 5555
+	public static void main(String[] args){
+	  // send a message to a LWM2M server:
+	  Request request = new Request(Code.GET);
+	  request.setURI("coap://192.168.1.43:5683/light");
+	  //request.setPayload("</1/1/0>");
+	  Endpoint endpoint = EndpointManager.getEndpointManager().getDefaultEndpoint();
+	  Response response = request.send(endpoint);
+	}
+}

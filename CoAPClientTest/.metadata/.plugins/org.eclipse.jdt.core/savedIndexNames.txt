@@ -1,0 +1,21 @@
+INDEX VERSION 1.127+C:\Users\Marcio\iot-security\CoAPClientTest\.metadata\.plugins\org.eclipse.jdt.core
+3934824154.index
+1498219845.index
+4108727661.index
+163172794.index
+1995173708.index
+1115467115.index
+4155206848.index
+3065916431.index
+1697886153.index
+1707705601.index
+4041092966.index
+1299022128.index
+4229539044.index
+2275712923.index
+1752045249.index
+3880423939.index
+30765161.index
+305854171.index
+3974580528.index
+3133528496.index

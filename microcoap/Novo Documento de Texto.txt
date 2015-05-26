@@ -1,0 +1,12 @@
+#ifndef MYENDPOINTS_H
+#define MYENDPOINTS_H
+     
+#include "endpoints.h"
+     
+class MyInheritedClass : public MyClass {
+public:
+    void myClassFunction();
+};
+     
+#endif
+
