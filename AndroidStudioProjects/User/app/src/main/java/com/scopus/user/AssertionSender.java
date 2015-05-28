@@ -3,12 +3,17 @@ package com.scopus.user;
 import android.os.AsyncTask;
 
 import org.eclipse.californium.core.CoapClient;
+import org.eclipse.californium.core.CoapHandler;
+import org.eclipse.californium.core.CoapObserveRelation;
 import org.eclipse.californium.core.CoapResponse;
+import org.eclipse.californium.core.Utils;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
@@ -18,10 +23,9 @@ import java.net.URL;
  */
 public class AssertionSender extends AsyncTask<URI, Void, String> {
     protected String doInBackground(URI... uris) {
-        String message;
 
         URI uri = uris[0];
-        CoapClient client = new CoapClient("coap://192.168.1.43:5683/light");
+        /*CoapClient client = new CoapClient("coap://129.132.15.80/");
         CoapResponse response = client.get();
         if (response != null) {
             message = response.getResponseText();
@@ -29,6 +33,39 @@ public class AssertionSender extends AsyncTask<URI, Void, String> {
         else {
             message = "Esse get ta null";
         }
+
+        if (response!=null) {
+            message += "Foi";
+            System.out.println(response.getCode());
+            System.out.println(response.getOptions());
+            System.out.println(response.getResponseText());
+
+            System.out.println("\nADVANCED\n");
+            // access advanced API with access to more details through .advanced()
+            System.out.println(Utils.prettyPrint(response));
+
+        } else {
+            message += "Null response";
+            System.out.println("No response received.");
+        }*/
+
+        CoapClient client = new CoapClient("coap://129.132.15.80/");
+        String message = "";
+
+        System.out.println("ASYNCHRONOUS");
+
+        client.get(new CoapHandler() {
+            @Override
+            public void onLoad(CoapResponse response) {
+                String content = response.getResponseText();
+                System.out.println("RESPONSE 3: " + content);
+            }
+
+            @Override
+            public void onError() {
+                System.err.println("FAILED");
+            }
+        });
         return message;
     }
 

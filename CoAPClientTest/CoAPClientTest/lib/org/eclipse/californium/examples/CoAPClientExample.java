@@ -31,13 +31,13 @@ public class CoAPClientExample {
 
 	public static void main(String[] args) {
 		
-		CoapClient client = new CoapClient("coap://192.168.1.241/light");
-		//CoapClient client = new CoapClient("coap://vs0.inf.ethz.ch/");
+		//CoapClient client = new CoapClient("coap://192.168.1.241:5683/light");
+		CoapClient client = new CoapClient("coap://129.132.15.80/");
 		
 		System.out.println("SYNCHRONOUS");
 		
 		// synchronous
-		String content1 = client.get().getResponseText();
+		//String content1 = client.get().getResponseText();
 		//System.out.println("RESPONSE 1: " + content1);
 		
 		//CoapResponse resp2 = client.post("payload", MediaTypeRegistry.TEXT_PLAIN);
@@ -66,7 +66,7 @@ public class CoAPClientExample {
 
 		System.out.println("OBSERVE (press enter to exit)");
 		
-		CoapObserveRelation relation = client.observe(
+		/*CoapObserveRelation relation = client.observe(
 				new CoapHandler() {
 					@Override public void onLoad(CoapResponse response) {
 						String content = response.getResponseText();
@@ -76,13 +76,13 @@ public class CoAPClientExample {
 					@Override public void onError() {
 						System.err.println("OBSERVING FAILED (press enter to exit)");
 					}
-				});
+				});*/
 		
 		// wait for user
 		try { br.readLine(); } catch (IOException e) { }
 		
 		System.out.println("CANCELLATION");
 		
-		relation.proactiveCancel();
+		//relation.proactiveCancel();
 	}
 }
