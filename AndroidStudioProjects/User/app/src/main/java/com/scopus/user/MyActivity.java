@@ -1,6 +1,7 @@
 package com.scopus.user;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -137,7 +138,7 @@ public class MyActivity extends ActionBarActivity {
             System.out.println("hue2");
         }*/
 
-        URI uri = null; // URI parameter of the request
+        // URI parameter of the request
 
         String message = "";
         // input URI from command line arguments
@@ -248,19 +249,13 @@ public class MyActivity extends ActionBarActivity {
         client.get(new CoapHandler() {
             @Override publi*/
 
-        try {
+        /*try {
             uri = new URI("coap://192.168.1.241/light");
         } catch (URISyntaxException e) {
             System.err.println("Invalid URI: " + e.getMessage());
             System.exit(-1);
-        }
-        try {
-            message = new AssertionSender().execute(uri).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
+        }*/
+
 
         if (message == ""){
             message += "Mensagem vazia";

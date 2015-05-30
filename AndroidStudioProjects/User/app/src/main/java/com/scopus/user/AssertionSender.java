@@ -1,5 +1,6 @@
 package com.scopus.user;
 
+import android.app.Activity;
 import android.os.AsyncTask;
 
 import org.eclipse.californium.core.CoapClient;
@@ -22,6 +23,14 @@ import java.net.URL;
  * Created by Daniel on 01/05/2015.
  */
 public class AssertionSender extends AsyncTask<URI, Void, String> {
+    //private String message="";
+
+    public DisplayMessageActivity displayMessageActivity;
+
+    public AssertionSender(DisplayMessageActivity activity){
+        this.displayMessageActivity = activity;
+    }
+
     protected String doInBackground(URI... uris) {
 
         URI uri = uris[0];
@@ -54,7 +63,10 @@ public class AssertionSender extends AsyncTask<URI, Void, String> {
 
         System.out.println("ASYNCHRONOUS");
 
-        client.get(new CoapHandler() {
+        MyCoapHandler handler = new MyCoapHandler();
+        client.get(handler);
+        message += handler.getResponseMessage();
+        /*client.get(new CoapHandler() {
             @Override
             public void onLoad(CoapResponse response) {
                 String content = response.getResponseText();
@@ -65,7 +77,7 @@ public class AssertionSender extends AsyncTask<URI, Void, String> {
             public void onError() {
                 System.err.println("FAILED");
             }
-        });
+        });*/
         return message;
     }
 
@@ -81,5 +93,10 @@ public class AssertionSender extends AsyncTask<URI, Void, String> {
         } catch (IOException e) {
             return "";
         }
+    }
+
+    protected void onPostExecute(String message){
+        this.displayMessageActivity.setText(message);
+        //return message;
     }
 }
