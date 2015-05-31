@@ -1,5 +1,8 @@
 package com.scopus.user;
 
+import android.content.Context;
+import android.content.Intent;
+
 import org.eclipse.californium.core.CoapHandler;
 import org.eclipse.californium.core.CoapResponse;
 
@@ -8,11 +11,23 @@ import org.eclipse.californium.core.CoapResponse;
  */
 public class MyCoapHandler  implements CoapHandler {
 
-    private String content;
+    public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
+
+    public Context context;
+
+    public MyCoapHandler(Context context){
+        this.context = context;
+    }
+
+    private String message;
     @Override
     public void onLoad(CoapResponse response) {
-        content = response.getResponseText();
-        System.out.println("RESPONSE 3: " + content);
+        message = response.getResponseText();
+        System.out.println("RESPONSE 3: " + message);
+        Intent intent = new Intent(this.context, DisplayMessageActivity.class);
+        intent.putExtra(EXTRA_MESSAGE, message);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
     }
 
     @Override
@@ -20,7 +35,7 @@ public class MyCoapHandler  implements CoapHandler {
         System.err.println("FAILED");
     }
 
-    public String getResponseMessage(){
-        return content;
-    }
+    //public String getResponseMessage(){
+        //return content;
+    //}
 }

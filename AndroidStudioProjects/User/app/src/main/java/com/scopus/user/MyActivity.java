@@ -41,7 +41,7 @@ import org.eclipse.californium.core.Utils;
 
 public class MyActivity extends ActionBarActivity {
 
-    public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -255,19 +255,34 @@ public class MyActivity extends ActionBarActivity {
             System.err.println("Invalid URI: " + e.getMessage());
             System.exit(-1);
         }*/
-
-
-        if (message == ""){
-            message += "Mensagem vazia";
+        URI uri = null;
+        try {
+            uri = new URI("coap://192.168.1.241:5683/light");
+            //AsyncTask assertionSender = new AssertionSender(this);
+            //assertionSender.execute(uri).get();
+            new AssertionSender(this).execute(uri).get();
+            //message = new AssertionSender().execute(uri).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            System.err.println("Invalid URI: " + e.getMessage());
+            System.exit(-1);
         }
+
+
+        /*if (message == ""){
+            message += "Mensagem vazia";
+        }*/
 
 
         // input URI from command line arguments
 
 
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
+        //intent.putExtra(EXTRA_MESSAGE, message);
 
+        //startActivity(intent);
     }
 
 

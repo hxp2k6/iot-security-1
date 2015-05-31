@@ -27,7 +27,7 @@ public class DisplayMessageActivity extends ActionBarActivity {
         setContentView(R.layout.activity_display_message);
         // Get the message from the intent
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
+        String message = intent.getStringExtra(MyCoapHandler.EXTRA_MESSAGE);
 
 /*******************************************************************************
  * Copyright (c) 2012, Institute for Pervasive Computing, ETH Zurich.
@@ -105,31 +105,12 @@ public class DisplayMessageActivity extends ActionBarActivity {
         //TextView textView = new TextView(this);
         //textView.setTextSize(40);
         //textView.setText(message);
-        URI uri = null;
-        try {
-            uri = new URI("coap://192.168.1.241:5683/light");
-        } catch (URISyntaxException e) {
-            System.err.println("Invalid URI: " + e.getMessage());
-            System.exit(-1);
-        }
-
-
-        try {
-            AsyncTask assertionSender = new AssertionSender(this);
-            assertionSender.execute(uri).get();
-            //message = new AssertionSender().execute(uri).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-    }
         // Set the text view as the activity layout
-    public void setText(String message) {
+
         final TextView textView = (TextView) findViewById(R.id.text_view);
         if (textView != null) {
             textView.setText(message);
-            //setContentView(textView);
+                //setContentView(textView);
         } else if (textView == null) {
             Toast toast = Toast.makeText(getApplicationContext(), "Eh null toast", Toast.LENGTH_SHORT);
             toast.show();
@@ -137,8 +118,9 @@ public class DisplayMessageActivity extends ActionBarActivity {
             Toast toast = Toast.makeText(getApplicationContext(), "Hello toast!", Toast.LENGTH_SHORT);
             toast.show();
         }
-        //textView.setTextSize(40);
+            //textView.setTextSize(40);
     }
+
 
 
 

@@ -1,6 +1,8 @@
 package com.scopus.user;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 
 import org.eclipse.californium.core.CoapClient;
@@ -8,6 +10,9 @@ import org.eclipse.californium.core.CoapHandler;
 import org.eclipse.californium.core.CoapObserveRelation;
 import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.Utils;
+import org.eclipse.californium.core.coap.CoAP;
+import org.eclipse.californium.core.coap.Request;
+import org.eclipse.californium.core.coap.Response;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -24,11 +29,12 @@ import java.net.URL;
  */
 public class AssertionSender extends AsyncTask<URI, Void, String> {
     //private String message="";
+    //public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
 
-    public DisplayMessageActivity displayMessageActivity;
+    public Context context;
 
-    public AssertionSender(DisplayMessageActivity activity){
-        this.displayMessageActivity = activity;
+    public AssertionSender(Context context){
+        this.context = context.getApplicationContext();
     }
 
     protected String doInBackground(URI... uris) {
@@ -58,14 +64,33 @@ public class AssertionSender extends AsyncTask<URI, Void, String> {
             System.out.println("No response received.");
         }*/
 
-        CoapClient client = new CoapClient("coap://129.132.15.80/");
         String message = "";
+
+        /*Request request = new Request(CoAP.Code.GET);
+        request.setURI("coap://129.132.15.80/");
+        request.send();
+        try {
+            Response response = request.waitForResponse();
+            message += response.toString();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
+
+
+        CoapClient client = new CoapClient("coap://129.132.15.80/");
+
 
         System.out.println("ASYNCHRONOUS");
 
-        MyCoapHandler handler = new MyCoapHandler();
+
+
+        MyCoapHandler handler = new MyCoapHandler(context);
         client.get(handler);
-        message += handler.getResponseMessage();
+        //message += handler.getResponseMessage();
+        System.err.println("--------------------------------------------------------------------");
+        System.err.println(message);
+
+
         /*client.get(new CoapHandler() {
             @Override
             public void onLoad(CoapResponse response) {
@@ -96,7 +121,12 @@ public class AssertionSender extends AsyncTask<URI, Void, String> {
     }
 
     protected void onPostExecute(String message){
-        this.displayMessageActivity.setText(message);
+        //this.myActivity.startActivity(new Intent());
+        System.err.println(message);
+        //Intent intent = new Intent(this.context, DisplayMessageActivity.class);
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //context.startActivity(intent);
         //return message;
     }
 }
