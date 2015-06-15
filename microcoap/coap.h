@@ -26,7 +26,6 @@ typedef struct
 typedef struct
 {
     const uint8_t *p;
-    //uint8_t *p;
     size_t len;
 } coap_buffer_t;
 
@@ -98,6 +97,7 @@ typedef enum
 typedef enum
 {
     COAP_RSPCODE_CONTENT = MAKE_RSPCODE(2, 5),
+    COAP_RSPCODE_CONTINUE = MAKE_RSPCODE(2, 31),
     COAP_RSPCODE_NOT_FOUND = MAKE_RSPCODE(4, 4),
     COAP_RSPCODE_BAD_REQUEST = MAKE_RSPCODE(4, 0),
     COAP_RSPCODE_CHANGED = MAKE_RSPCODE(2, 4)

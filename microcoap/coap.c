@@ -98,15 +98,12 @@ int coap_parseHeader(coap_header_t *hdr, const uint8_t *buf, size_t buflen)
 
 int coap_parseToken(coap_buffer_t *tokbuf, const coap_header_t *hdr, const uint8_t *buf, size_t buflen)
 {
-    uint8_t t[5];
-    uint8_t *pointer;
     if (hdr->tkl == 0)
     {
         //tokbuf->p = NULL;
         //tokbuf->len = 0;
         //tokbuf->p = 10;
         //tokbuf->len = 2;
-        
         
         if (4U + hdr->tkl > buflen)
            return COAP_ERR_TOKEN_TOO_SHORT;   // tok bigger than packet
@@ -120,22 +117,7 @@ int coap_parseToken(coap_buffer_t *tokbuf, const coap_header_t *hdr, const uint8
     {
         if (4U + hdr->tkl > buflen)
             return COAP_ERR_TOKEN_TOO_SHORT;   // tok bigger than packet
-        //tokbuf->p = buf+4;  // past header
-        /*t[0] = buf[1];
-        t[1] = buf[2];
-        t[2] = buf[3];
-        t[3] = buf[4];*/
-        /*t[0] = 186;
-        t[1] = 186;
-        t[2] = 202;
-        t[3] = 0;*/
-        t[0] = 1;
-        t[1] = 2;
-        t[2] = 3;
-        t[3] = 4;
-        //pointer = t;
-        //tokbuf->p = pointer;
-        tokbuf->p = buf + 4;
+        tokbuf->p = buf+4;  // past header
         tokbuf->len = hdr->tkl;
         return 0;
     }
@@ -452,7 +434,6 @@ int coap_make_response(coap_rw_buffer_t *scratch, coap_packet_t *pkt, const uint
     pkt->hdr.id[0] = msgid_hi;
     pkt->hdr.id[1] = msgid_lo;
     pkt->numopts = 1;
-
 
     // need token in response
     if (tok) {
