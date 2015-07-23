@@ -5,35 +5,86 @@
 #include <string.h>
 #include <stddef.h>
 #include "coap.h"
+#define DEBUG
 
 extern void endpoint_setup(void);
 extern const coap_endpoint_t endpoints[];
 
 #ifdef DEBUG
-void coap_dumpHeader(coap_header_t *hdr)
+void coap_dumpToken(coap_buffer_t *tok, char debug[]){
+    char temp[300];
+    //uint8_t value = tok.p;
+        
+    //tok->p = 13;
+
+
+    strcat(debug, "Token:\n");
+    sprintf(temp, "  0x%08X\n", tok->p);
+    strcat(debug, temp);
+    strcat(debug, "Len:\n");
+
+    sprintf(temp, "  0x%02u\n", tok->len);
+    strcat(debug, temp);
+}
+#endif
+
+
+#ifdef DEBUG
+//void coap_dumpHeader(coap_header_t *hdr)
+void coap_dumpHeader(coap_header_t *hdr, char debug[])
 {
-    printf("Header:\n");
+  
+    char temp[300];
+    
+    /*printf("Header:\n");
     printf("  ver  0x%02X\n", hdr->ver);
     printf("  t    0x%02X\n", hdr->t);
     printf("  tkl  0x%02X\n", hdr->tkl);
     printf("  code 0x%02X\n", hdr->code);
-    printf("  id   0x%02X%02X\n", hdr->id[0], hdr->id[1]);
+    printf("  id   0x%02X%02X\n", hdr->id[0], hdr->id[1]);*/
+    
+    strcat(debug, "Header:\n");
+    strcat(debug, "  ver");
+    sprintf(temp, "  0x%02X\n", hdr->ver);
+    strcat(debug, temp);
+    strcat(debug, "  t");
+    sprintf(temp, "  0x%02X\n", hdr->t);
+    strcat(debug, temp);
+    strcat(debug, "  tkl");
+    sprintf(temp, "  0x%02X\n", hdr->tkl);
+    strcat(debug, temp);
+    strcat(debug, "  code");
+    sprintf(temp, "  0x%02X\n", hdr->code);
+    strcat(debug, temp);
+    strcat(debug, "  id");
+    sprintf(temp, "  0x%02X%02X\n", hdr->id[0], hdr->id[1]);
+    strcat(debug, temp);
+    
 }
 #endif
 
 #ifdef DEBUG
-void coap_dump(const uint8_t *buf, size_t buflen, bool bare)
+//void coap_dump(const uint8_t *buf, size_t buflen, bool bare)
+void coap_dump(const uint8_t *buf, size_t buflen, bool bare, char debug[])
 {
+    char temp[300];
     if (bare)
     {
         while(buflen--)
-            printf("%02X%s", *buf++, (buflen > 0) ? " " : "");
+            //sprintf(temp, "%02X%s", *buf++, (buflen > 0) ? " " : "");
+            //strcat(debug, temp);
+            printf("%02X%s", *buf++, (buflen > 0) ? " " : "");  
     }
     else
     {
+        //sprintf(temp, "Dump: ");
+        //strcat(debug, temp);
         printf("Dump: ");
         while(buflen--)
+            //sprintf(temp, "%02X%s", *buf++, (buflen > 0) ? " " : "");
+            //strcat(debug, temp);
             printf("%02X%s", *buf++, (buflen > 0) ? " " : "");
+        //strcat(temp, "\n");
         printf("\n");
     }
 }
@@ -58,9 +109,17 @@ int coap_parseToken(coap_buffer_t *tokbuf, const coap_header_t *hdr, const uint8
 {
     if (hdr->tkl == 0)
     {
-        tokbuf->p = NULL;
-        tokbuf->len = 0;
+        //tokbuf->p = NULL;
+        //tokbuf->len = 0;
+        //tokbuf->p = 10;
+        //tokbuf->len = 2;
+        
+        if (4U + hdr->tkl > buflen)
+           return COAP_ERR_TOKEN_TOO_SHORT;   // tok bigger than packet
+        tokbuf->p = buf+4;  // past header
+        tokbuf->len = hdr->tkl;
         return 0;
+        //return 0;
     }
     else
     if (hdr->tkl <= 8)
@@ -187,26 +246,65 @@ int coap_parseOptionsAndPayload(coap_option_t *options, uint8_t *numOptions, coa
 }
 
 #ifdef DEBUG
-void coap_dumpOptions(coap_option_t *opts, size_t numopt)
+//void coap_dumpOptions(coap_option_t *opts, size_t numopt)
+char coap_dumpOptions(coap_option_t *opts, size_t numopt, char debug[])
 {
+    char temp[1500];
+    
     size_t i;
-    printf(" Options:\n");
-    for (i=0;i<numopt;i++)
-    {
-        printf("  0x%02X [ ", opts[i].num);
-        coap_dump(opts[i].buf.p, opts[i].buf.len, true);
-        printf(" ]\n");
-    }
+    int j;
+    
+    //printf(" Options:\n");
+    strcat(debug, " Options:\n");
+    //for (i=0;i<numopt;i++)
+    for (i=0;i<2;i++)
+    {    
+        sprintf(temp, "%d ", opts[i].buf.len);
+        strcat(debug,temp);
+        sprintf(temp, "%u ", opts[i].num);
+        strcat(debug, temp);
+        //coap_buffer_to_string(&temp, 1000, &opts[i].buf);
+        //strcat(debug, temp);
+        strcat(debug, "\n");
+        if (opts[i].num == 42){
+          coap_buffer_to_string(&temp, 1500, &opts[i].buf);
+          strcat(debug, temp);
+          strcat(debug, "\n");
+        }
+        
+        //for (j=0;j<opts[i].buf.len;j++){
+        //for (j=0;j<20;j++){
+          //sprintf(temp, "  0x%02X [ ", opts[i].buf.p->);
+          //sprintf(temp, "len: ");
+          //strcat(debug, temp);
+          //sprintf(temp, "0x%02X ", (opts[i].buf.p)[j]);
+          //sprintf(temp, "0x%02X ",   opts[i].buf.len);
+          //strcat(debug, temp);
+  
+          //printf("  0x%02X [ ", opts[i].num);
+          //coap_dump(opts[i].buf.p, opts[i].buf.len, true, debug);
+          //sprintf(temp, " ]\n");
+          //strcat(debug, temp);
+        //}
+    }   
+    //strcat(debug, "\n");    
 }
 #endif
 
 #ifdef DEBUG
-void coap_dumpPacket(coap_packet_t *pkt)
+//void coap_dumpPacket(coap_packet_t *pkt)
+void coap_dumpPacket(coap_packet_t *pkt, char debug[])
 {
-    coap_dumpHeader(&pkt->hdr);
-    coap_dumpOptions(pkt->opts, pkt->numopts);
+    debug[0] = '\0';
+    
+    //int i = 42;
+    //sprintf(debug, "%d", i);
+    
+    coap_dumpHeader(&pkt->hdr, debug);
+    coap_dumpToken(&pkt->tok, debug);
+    coap_dumpOptions(pkt->opts, pkt->numopts, debug);
     printf("Payload: ");
-    coap_dump(pkt->payload.p, pkt->payload.len, true);
+    coap_dump(pkt->payload.p, pkt->payload.len, true, debug);
     printf("\n");
 }
 #endif

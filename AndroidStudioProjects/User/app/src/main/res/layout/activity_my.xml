@@ -7,6 +7,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/make_request"
-        android:onClick="makeRequest" />
+        android:text="@string/get_assertion"
+        android:onClick="getAssertion" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/send_assertion"
+        android:onClick="sendAssertion" />
 </LinearLayout>

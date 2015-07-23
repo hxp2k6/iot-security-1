@@ -131,7 +131,7 @@
                prefix="localhost_access_log." suffix=".txt" pattern="common" resolveHosts="false"/>
         -->
 
-      <Context docBase="C:\Users\Marcio\iot-security\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\Marcio\iot-security\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\webservice" path="/webservice" reloadable="true" source="org.eclipse.jst.jee.server:webservice"/></Host>
+      <Context docBase="C:\Users\Daniel\iot-security\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\Daniel\iot-security\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\webservice" path="/webservice" reloadable="true" source="org.eclipse.jst.jee.server:webservice"/></Host>
     </Engine>
   </Service>
 </Server>

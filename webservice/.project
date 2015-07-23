@@ -37,22 +37,22 @@
 		<link>
 			<name>AssertionServer</name>
 			<type>2</type>
-			<location>C:/Users/Marcio/iot-security/AssertionServer</location>
+			<location>C:/Users/Daniel/iot-security/AssertionServer</location>
 		</link>
 		<link>
 			<name>AssertionServerControl</name>
 			<type>2</type>
-			<location>C:/Users/Marcio/iot-security/AssertionServerControl</location>
+			<location>C:/Users/Daniel/iot-security/AssertionServerControl</location>
 		</link>
 		<link>
 			<name>SAMLlib</name>
 			<type>2</type>
-			<location>C:/Users/Marcio/iot-security/SAMLlib</location>
+			<location>C:/Users/Daniel/iot-security/SAMLlib</location>
 		</link>
 		<link>
 			<name>Test</name>
 			<type>2</type>
-			<location>C:/Users/Marcio/iot-security/Test</location>
+			<location>C:/Users/Daniel/iot-security/Test</location>
 		</link>
 	</linkedResources>
 </projectDescription>

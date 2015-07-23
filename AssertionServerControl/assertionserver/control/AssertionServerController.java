@@ -40,9 +40,9 @@ public class AssertionServerController{
 	
 	public void init() throws UnrecoverableKeyException, NoSuchAlgorithmException, CertificateException, KeyStoreException, SQLException, IOException, ConfigurationException, ParserConfigurationException, SAXException, VerificationException, MarshalException, XMLSignatureException{
 
-		System.out.println(sas);
+		/*System.out.println(sas);
 		if(sas == null)
-			System.out.println("eh null po");
+			System.out.println("eh null po");*/
 		SAMLNameID subject = new SAMLNameID("ludwig@sics.se");
 		String soaStr = "testSOA";
 		SAMLNameID soa = new SAMLNameID(soaStr);

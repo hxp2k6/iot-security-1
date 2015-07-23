@@ -97,6 +97,7 @@ typedef enum
 typedef enum
 {
     COAP_RSPCODE_CONTENT = MAKE_RSPCODE(2, 5),
+    COAP_RSPCODE_CONTINUE = MAKE_RSPCODE(2, 31),
     COAP_RSPCODE_NOT_FOUND = MAKE_RSPCODE(4, 4),
     COAP_RSPCODE_BAD_REQUEST = MAKE_RSPCODE(4, 0),
     COAP_RSPCODE_CHANGED = MAKE_RSPCODE(2, 4)
@@ -154,12 +155,13 @@ typedef struct
 
 
 ///////////////////////
-void coap_dumpPacket(coap_packet_t *pkt);
+void coap_dumpPacket(coap_packet_t *pkt, char debug[]);
 int coap_parse(coap_packet_t *pkt, const uint8_t *buf, size_t buflen);
 int coap_buffer_to_string(char *strbuf, size_t strbuflen, const coap_buffer_t *buf);
 const coap_option_t *coap_findOptions(const coap_packet_t *pkt, uint8_t num, uint8_t *count);
 int coap_build(uint8_t *buf, size_t *buflen, const coap_packet_t *pkt);
-void coap_dump(const uint8_t *buf, size_t buflen, bool bare);
+//void coap_dump(const uint8_t *buf, size_t buflen, bool bare);
+void coap_dump(const uint8_t *buf, size_t buflen, bool bare, char debug[]);
 int coap_make_response(coap_rw_buffer_t *scratch, coap_packet_t *pkt, const uint8_t *content, size_t content_len, uint8_t msgid_hi, uint8_t msgid_lo, const coap_buffer_t* tok, coap_responsecode_t rspcode, coap_content_type_t content_type);
 int coap_handle_req(coap_rw_buffer_t *scratch, const coap_packet_t *inpkt, coap_packet_t *outpkt);
 void coap_option_nibble(uint32_t value, uint8_t *nibble);

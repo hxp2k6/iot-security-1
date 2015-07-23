@@ -6,7 +6,15 @@ static char light = '0';
 
 const uint16_t rsplen = 1500;
 static char rsp[1500] = "";
+
+
+const uint16_t rsp2len = 1500;
+static char rsp2[1500] = "";
+
 void build_rsp(void);
+
+//Meu codigo
+
 
 #ifdef ARDUINO
 #include "Arduino.h"
@@ -33,7 +41,9 @@ static int handle_get_well_known_core(coap_rw_buffer_t *scratch, const coap_pack
 static const coap_endpoint_path_t path_light = {1, {"light"}};
 static int handle_get_light(coap_rw_buffer_t *scratch, const coap_packet_t *inpkt, coap_packet_t *outpkt, uint8_t id_hi, uint8_t id_lo)
 {
-    return coap_make_response(scratch, outpkt, (const uint8_t *)&light, 1, id_hi, id_lo, &inpkt->tok, COAP_RSPCODE_CONTENT, COAP_CONTENTTYPE_TEXT_PLAIN);
+    create_response_payload(rsp2);
+    //return coap_make_response(scratch, outpkt, (const uint8_t *)&light, 1, id_hi, id_lo, &inpkt->tok, COAP_RSPCODE_CONTENT, COAP_CONTENTTYPE_TEXT_PLAIN);
+    return coap_make_response(scratch, outpkt, (const uint8_t *)rsp2, strlen(rsp2), id_hi, id_lo, &inpkt->tok, COAP_RSPCODE_CONTENT, COAP_CONTENTTYPE_TEXT_PLAIN);
 }
 
 static int handle_put_light(coap_rw_buffer_t *scratch, const coap_packet_t *inpkt, coap_packet_t *outpkt, uint8_t id_hi, uint8_t id_lo)
@@ -62,10 +72,33 @@ static int handle_put_light(coap_rw_buffer_t *scratch, const coap_packet_t *inpk
     }
 }
 
+
+static const coap_endpoint_path_t path_watch = {1, {"watch"}};
+static int handle_get_watch(coap_rw_buffer_t *scratch, const coap_packet_t *inpkt, coap_packet_t *outpkt, uint8_t id_hi, uint8_t id_lo)
+{
+    create_response_payload(rsp2);
+    //return coap_make_response(scratch, outpkt, (const uint8_t *)&light, 1, id_hi, id_lo, &inpkt->tok, COAP_RSPCODE_CONTENT, COAP_CONTENTTYPE_TEXT_PLAIN);
+    return coap_make_response(scratch, outpkt, (const uint8_t *)rsp2, strlen(rsp2), id_hi, id_lo, &inpkt->tok, COAP_RSPCODE_CONTENT, COAP_CONTENTTYPE_TEXT_PLAIN);
+}
+
+static int handle_post_watch(coap_rw_buffer_t *scratch, const coap_packet_t *inpkt, coap_packet_t *outpkt, uint8_t id_hi, uint8_t id_lo)
+{
+    if (inpkt->payload.len == 0)
+        return coap_make_response(scratch, outpkt, NULL, 0, id_hi, id_lo, &inpkt->tok, COAP_RSPCODE_BAD_REQUEST, COAP_CONTENTTYPE_TEXT_PLAIN);
+    else
+    {
+        create_response_payload_post(rsp2);
+        //return coap_make_response(scratch, outpkt, (const uint8_t *)rsp2, strlen(rsp2), id_hi, id_lo, &inpkt->tok, COAP_RSPCODE_CONTINUE, COAP_CONTENTTYPE_TEXT_PLAIN);
+        return coap_make_response(scratch, outpkt, (const uint8_t *)rsp2, strlen(rsp2), id_hi, id_lo, &inpkt->tok, COAP_RSPCODE_CONTENT, COAP_CONTENTTYPE_TEXT_PLAIN);
+    }
+}
+
 const coap_endpoint_t endpoints[] =
 {
     {COAP_METHOD_GET, handle_get_well_known_core, &path_well_known_core, "ct=40"},
     {COAP_METHOD_GET, handle_get_light, &path_light, "ct=0"},
+    {COAP_METHOD_GET, handle_get_watch, &path_watch, "ct=0"},
+    {COAP_METHOD_POST, handle_post_watch, &path_watch, "ct=0"},
     {COAP_METHOD_PUT, handle_put_light, &path_light, NULL},
     {(coap_method_t)0, NULL, NULL, NULL}
 };
@@ -110,4 +143,18 @@ void build_rsp(void)
         ep++;
     }
 }
+
+void create_response_payload(const uint8_t *buffer)
+{
+    char *response = "1337";
+    memcpy((void*)buffer, response, strlen(response));
+}
+
+void create_response_payload_post(const uint8_t *buffer)
+{
+    char *response = "autorizado";
+    memcpy((void*)buffer, response, strlen(response));
+}
+
+
 

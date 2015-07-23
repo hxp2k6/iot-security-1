@@ -1,6 +1,7 @@
 package com.scopus.user;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -11,6 +12,10 @@ import android.widget.EditText;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.eclipse.californium.core.CoapHandler;
+import org.eclipse.californium.core.CoapObserveRelation;
+import org.eclipse.californium.core.coap.MediaTypeRegistry;
+import org.eclipse.californium.core.network.config.NetworkConfig;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,6 +28,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
+import org.eclipse.californium.core.CoapClient;
+import org.eclipse.californium.core.CoapResponse;
+import org.eclipse.californium.core.Utils;
 
 
 public class MyActivity extends ActionBarActivity {
@@ -58,7 +72,9 @@ public class MyActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /** Called when the user clicks the Send button */
+    /**
+     * Called when the user clicks the Send button
+     */
     public void sendMessage(View view) {
         Intent intent = new Intent(this, DisplayMessageActivity.class);
         //EditText editText = (EditText) findViewById(R.id.edit_message);
@@ -67,15 +83,18 @@ public class MyActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    public void makeRequest(View view) throws IOException, JSONException {
+    public static String assertion = null;
+
+    public void getAssertion(View view) throws IOException, JSONException {
         Intent intent = new Intent(this, DisplayMessageActivity.class);
         //EditText editText = (EditText) findViewById(R.id.edit_message);
         //String message = editText.getText().toString();
 
 
-        URL url = new URL("http://192.168.1.48:8080/webservice/rest/assertion/");
 
-        String assertion = null;
+        URL url = new URL("http://192.168.1.14:8080/webservice/rest/assertion/");
+
+
         try {
             assertion = new AssertionGetter().execute(url).get();
         } catch (InterruptedException e) {
@@ -109,7 +128,7 @@ public class MyActivity extends ActionBarActivity {
         }*/
 
         //Parse JSON
-        JSONObject json = new JSONObject(assertion);
+        /*JSONObject json = new JSONObject(assertion);
         String message = "";
         try {
             message = "ID " + json.get("ID") + "/n";
@@ -120,16 +139,177 @@ public class MyActivity extends ActionBarActivity {
         }
         catch(JSONException e){
             System.out.println("hue2");
+        }*/
+
+        // URI parameter of the request
+
+        String message = "";
+        // input URI from command line arguments
+        /*try {
+            uri = new URI("coap://192.168.1.241:5683/light");
+        } catch (URISyntaxException e) {
+            System.err.println("Invalid URI: " + e.getMessage());
+            System.exit(-1);
         }
+
+        try {
+            message = new AssertionSender().execute(uri).get(1000, TimeUnit.MILLISECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }*/
+
+     /*  CoapClient client1 = new CoapClient(uri);
+       CoapClient client2 = new CoapClient("coap", "192.168.1.241", 5683, "light");
+      CoapClient client3 = new CoapClient("coap://129.132.15.80:5683/");
+
+        CoapResponse response = client1.get();*/
+
+        //if (response != null) {
+
+            /*System.out.println(response.getCode());
+            System.out.println(response.getOptions());
+            System.out.println(response.getResponseText());
+
+            System.out.println("\nADVANCED\n");
+            // access advanced API with access to more details through .advanced()
+            System.out.println(Utils.prettyPrint(response));*/
+
+            /*message += response.getCode();
+            message += response.getOptions();
+            message += response.getResponseText();
+            message += Utils.prettyPrint(response);*/
+
+        /*}
+        else {
+            System.out.println("No response received.");
+            message += "No response received 1";
+        }
+
+        response = client2.get();
+
+        if (response != null) {
+
+            /*System.out.println(response.getCode());
+            System.out.println(response.getOptions());
+            System.out.println(response.getResponseText());
+
+            System.out.println("\nADVANCED\n");
+            // access advanced API with access to more details through .advanced()
+            System.out.println(Utils.prettyPrint(response));*/
+
+        /*    message += response.getCode();
+            message += response.getOptions();
+            message += response.getResponseText();
+            message += Utils.prettyPrint(response);
+
+        } else {
+            System.out.println("No response received.");
+            message += " No response received 2";
+        }
+
+        response = client3.get();
+
+        if (response != null) {
+
+            /*System.out.println(response.getCode());
+            System.out.println(response.getOptions());
+            System.out.println(response.getResponseText());
+
+            System.out.println("\nADVANCED\n");
+            // access advanced API with access to more details through .advanced()
+            System.out.println(Utils.prettyPrint(response));*/
+
+            /*message += response.getCode();
+            message += response.getOptions();
+            message += response.getResponseText();
+            message += Utils.prettyPrint(response);
+
+        } else {
+            System.out.println("No response received.");
+            message += " No response received 3";
+        }
+
 
         //String message = AssertionGetter.get();
 
-                intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
 
+        CoapClient client = new CoapClient("coap://192.168.1.43/light");
+
+        System.out.println("SYNCHRONOUS");
+
+        // synchronous
+//
+      //  System.out.println("RESPONSE 1: " + content1);
+
+*/
+        /*CoapClient client = new CoapClient("coap://192.168.1.241/light");
+        System.out.println("ASYNCHRONOUS (press enter to continue)");
+
+        client.get(new CoapHandler() {
+            @Override publi*/
+
+        /*try {
+            uri = new URI("coap://192.168.1.241/light");
+        } catch (URISyntaxException e) {
+            System.err.println("Invalid URI: " + e.getMessage());
+            System.exit(-1);
+        }*/
+
+        /* ISSO N TAVA COMENTADO ANTES */
+        /***************************************************************
+        URI uri = null;
+        try {
+            uri = new URI("coap://192.168.1.241:5683/light");
+            //AsyncTask assertionSender = new AssertionSender(this);
+            //assertionSender.execute(uri).get();
+            new AssertionSender(this).execute(uri).get();
+            //message = new AssertionSender().execute(uri).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            System.err.println("Invalid URI: " + e.getMessage());
+            System.exit(-1);
+        }
+        *****************************************************************/
+
+        /*if (message == ""){
+            message += "Mensagem vazia";
+        }*/
+
+
+        // input URI from command line arguments
+
+
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        intent.putExtra(EXTRA_MESSAGE, assertion);
+        startActivity(intent);
     }
 
+    public void sendAssertion(View view) throws IOException {
+        Intent intent = new Intent(this, DisplayMessageActivity.class);
+        URI uri = null;
+        String response = "";
+        try {
+            uri = new URI("coap://192.168.1.241:5683/watch");
+        } catch (URISyntaxException e) {
+            System.err.println("Invalid URI: " + e.getMessage());
+            System.exit(-1);
+        }
+        try {
+            response = new AssertionSender(this, assertion).execute(uri).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
-
-
+        intent.putExtra(EXTRA_MESSAGE, response);
+        startActivity(intent);
+    }
 }
