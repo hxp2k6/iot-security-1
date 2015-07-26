@@ -25,16 +25,6 @@ static coap_rw_buffer_t scratch_buf = {scratch_raw, sizeof(scratch_raw)};
 
 IPAddress ip(192,168,1,241); //<<<<IP hardcoded
 
-//char json[] = "{\"sensor\":\"gps\",\"time\":1351824120,\"data\":[48.756080,2.302038]}";
-
-
-/*const char* sensor = root["sensor"];
-long time          = root["time"];
-double latitude    = root["data"][0];
-double longitude   = root["data"][1];*/
-
-
-
 void setup()
 {
     int i;
@@ -84,9 +74,10 @@ void loop()
     
     String string;
     char c;
-    char json[512];
+    char json[256];
     boolean pastHeaderFlag = 0;
-    StaticJsonBuffer<512> jsonBuffer;
+    boolean jsonOptionFlag = 0;
+    StaticJsonBuffer<256> jsonBuffer;
     
     if ((sz = udp.parsePacket()) > 0)
     {
@@ -97,14 +88,9 @@ void loop()
             Serial.print(packetbuf[i], HEX);
             Serial.print(" ");
         }
-        
-        Serial.println("");
-        
-
-            
+     
         Serial.print(" ");
-        
-
+       
         
         //setTime(1357041600);
         Serial.print("now ");
@@ -137,48 +123,80 @@ void loop()
         {
             size_t rsplen = sizeof(packetbuf);
             coap_packet_t rsppkt;
-            //Serial.print(debug);
+            Serial.print(debug);
 
-            Serial.print("SIZE: ");
-            Serial.println(sz);
+            //Serial.print("SIZE: ");
+            //Serial.println(sz);
+            
             string = "";
-            // Esse + 3 foi uma correção
+            // Esse + 3 
+            int abreCounter = 0;
+            int fechaCounter = 0;
             for (i=0;i<sz;i++){
               c = packetbuf[i];
               if(c == '{'){
-                pastHeaderFlag = 1;
+                abreCounter++;
+                if(packetbuf[i + 1] == '"'){
+                  pastHeaderFlag = 1;
+                  jsonOptionFlag = 1;
+                }
               }
+
               if(pastHeaderFlag){
                 string = string + c;
               }
+              
+              if(c == '}'){
+                fechaCounter++;
+                if(abreCounter == fechaCounter){
+                  pastHeaderFlag = 0;
+                }
+              }
             }
             
-            Serial.println(string);
-            Serial.println("fim string");
-            if(pastHeaderFlag){
+            //Serial.println(string);
             
-              /*strncpy(json, string.c_str(), sizeof(json));
-              json[sizeof(json) - 1] = 0;
+            if(jsonOptionFlag){
+            
+              //strncpy(json, string.c_str(), sizeof(json));
+              //json[sizeof(json) - 1] = 0;
+              //JsonObject& root = jsonBuffer.parseObject(json);
+              
+              string.toCharArray(json, sizeof(json));
               JsonObject& root = jsonBuffer.parseObject(json);
+              Serial.print("\n");
+              root.prettyPrintTo(Serial);
+              Serial.println("\n");
+              
+              
               const char* id = root["ID"];
               Serial.print("ID : ");
               Serial.println(id);
-              /*const char* ii = root["II"];
+              const char* ii = root["II"];
+              Serial.print("II : ");
               Serial.println(ii);
               const char* is = root["IS"];
+              Serial.print("IS : ");
               Serial.println(is);
               const char* sk = root["SK"];
+              Serial.print("SK : ");
               Serial.println(sk);
-
-              
               const char* nb = root["ST"]["OB"]["NB"];
+              Serial.print("NB : ");
               Serial.println(nb);
               const char* na = root["ST"]["OB"]["NA"];
+              Serial.print("NA : ");
               Serial.println(na);
               const char* act = root["ST"]["ACT"];
+              //const char* act = root["ACT"];
+              Serial.print("ACT : ");
               Serial.println(act);
               const char* res = root["ST"]["RES"];
-              Serial.println(res);*/
+              //const char* res = root["RES"];
+              Serial.print("RES : ");
+              Serial.println(res);
+
+              
             }
             else{
             Serial.println("Sem JSON-------------------------------------------------");

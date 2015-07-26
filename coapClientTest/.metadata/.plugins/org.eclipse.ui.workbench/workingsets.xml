@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1432413835867_1" label="root" name="root">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cf-plugtest-server" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/californium-osgi" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cf-helloworld-client" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cf-secure" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cf-plugtest-checker" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/californium" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cf-proxy" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cf-cocoa" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cf-helloworld-server" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/californium-core" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cf-benchmark" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cf-plugtest-client" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/californium-proxy" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1432406927778_0" label="Window Working Set" name="Aggregate for window 1432406927778"/>
+</workingSetManager>

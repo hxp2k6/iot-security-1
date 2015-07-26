@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 11 resources" deleteContents="true" description="Delete 11 resources" element1="/californium" element10="/cf-proxy" element11="/cf-secure" element2="/californium-proxy" element3="/cf-benchmark" element4="/cf-cocoa" element5="/cf-helloworld-client" element6="/cf-helloworld-server" element7="/cf-plugtest-checker" element8="/cf-plugtest-client" element9="/cf-plugtest-server" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="11" stamp="1432414016091"/>
+</session>

@@ -73,15 +73,18 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TimeZone;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -700,10 +703,21 @@ public class AssertionServer {
 		SAMLSubject subject = new SAMLSubject(request.getSubject());
 		List<SAMLStatement> statements = new ArrayList<SAMLStatement>();
 		statements.add(statement);
-		Date now = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DAY_OF_MONTH, this.defaultValidity);
-		Date notOnOrAfter = cal.getTime();
+		
+		
+		//Código pra arrumar timezone
+		SimpleDateFormat sdfAmerica = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+		TimeZone tzInAmerica = TimeZone.getTimeZone("America/Sao_Paulo");
+		sdfAmerica.setTimeZone(tzInAmerica);
+		Date date = new Date();
+		Calendar calendar = new GregorianCalendar();
+		calendar.setTime(date);
+		calendar.setTimeZone(tzInAmerica);
+		
+		Date now = calendar.getTime();
+		calendar.add(Calendar.DAY_OF_MONTH, this.defaultValidity);
+		Date notOnOrAfter = calendar.getTime();
+		
 		List<SAMLCondition> conditions = Collections.emptyList();
 		SAMLConditions conditionsE = new SAMLConditions(now,
 				notOnOrAfter, conditions);

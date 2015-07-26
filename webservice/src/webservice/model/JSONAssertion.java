@@ -24,10 +24,15 @@ import se.sics.util.XML2String;
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.xml.crypto.MarshalException;
 import javax.xml.crypto.dsig.XMLSignatureException;
@@ -117,7 +122,22 @@ public class JSONAssertion {
     			   InvalidAlgorithmParameterException, MarshalException, 
     			   XMLSignatureException {
     	this.id = IdGenerator.createIdString();
-    	this.issueInstant = new Date();
+    	
+
+ 
+    	//Código pra arrumar timezone
+		SimpleDateFormat sdfAmerica = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+		TimeZone tzInAmerica = TimeZone.getTimeZone("America/Sao_Paulo");
+		sdfAmerica.setTimeZone(tzInAmerica);
+		Date date = new Date();
+		Calendar calendar = new GregorianCalendar();
+		calendar.setTime(date);
+		calendar.setTimeZone(tzInAmerica);
+    	
+    	this.issueInstant = calendar.getTime();
+    	//this.issueInstant = new Date();
+		
+		
     	this.issuer = (SAMLNameID)issuer.clone();
     	if (subject != null) {
     		this.subject = (SAMLSubject)subject.clone();
@@ -379,27 +399,30 @@ public class JSONAssertion {
     
     public JSONObject getJSON(){
     	JSONObject json = new JSONObject();
-    	String issueInstantStr = DateUtils.toString(this.issueInstant);
+    	SimpleDateFormat sdfAmerica = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+    	String issueInstantStr = sdfAmerica.format(this.getIssueInstant());
     	String issuerStr = this.issuer.getName();
     	json.put("ID", this.id);
     	json.put("II", issueInstantStr);
     	json.put("IS", issuerStr);
-    	json.put("SK", "");
+    	json.put("SK", "key");
     	
     	JSONObject jsonConditions = new JSONObject();
     	
         if (this.conditions.getNotBefore() != null) {
-        	jsonConditions.put("NB", DateUtils.toString(this.conditions.getNotBefore()));
+        	jsonConditions.put("NB", sdfAmerica.format(this.conditions.getNotBefore()));
         }
         if (this.conditions.getNotOnOrAfter() != null) {
-        	jsonConditions.put("NA", DateUtils.toString(this.conditions.getNotOnOrAfter()));
+        	jsonConditions.put("NA", sdfAmerica.format(this.conditions.getNotOnOrAfter()));
         }
         
         JSONObject jsonObligations = new JSONObject();
-        jsonObligations.put("OB:", jsonConditions);
+        jsonObligations.put("OB", jsonConditions);
+        
+        jsonObligations.put("ACT", "GET");
+        jsonObligations.put("RES", "coap://192.168.1.241/watch");
+        
         json.put("ST", jsonObligations);
-        json.put("ACT", "GET");
-        json.put("RES", "coap://ip");
 		return json;
     }
 }
