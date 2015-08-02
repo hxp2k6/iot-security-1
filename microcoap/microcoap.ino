@@ -11,7 +11,8 @@
 #include "coap.h"
 #include <Time.h>
 
-char debug[1500];
+char debug[1000];
+char tempChar[500];
 
 #define PORT 5683
 static uint8_t mac[] = {0x90, 0xA2, 0xDA, 0x0E, 0x0C, 0xFF};
@@ -208,6 +209,11 @@ void loop()
 
             coap_handle_req(&scratch_buf, &pkt, &rsppkt);
             coap_dumpPacket(&pkt, debug);
+            uint8_t optionsNumber = 1;
+            
+            coap_get_path(pkt.opts, pkt.numopts, debug);
+            Serial.println(debug);
+            
 
             //memset(packetbuf, 0, UDP_TX_PACKET_MAX_SIZE);
             if (0 != (rc = coap_build(packetbuf, &rsplen, &rsppkt)))

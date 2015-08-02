@@ -127,6 +127,10 @@ typedef enum
     COAP_ERR_BUFFER_TOO_SMALL = 9,
     COAP_ERR_UNSUPPORTED = 10,
     COAP_ERR_OPTION_DELTA_INVALID = 11,
+    
+    //Estes são meus
+    
+    COAP_ERR_PATH_INVALID = 12,
 } coap_error_t;
 
 ///////////////////////
@@ -167,6 +171,10 @@ int coap_handle_req(coap_rw_buffer_t *scratch, const coap_packet_t *inpkt, coap_
 void coap_option_nibble(uint32_t value, uint8_t *nibble);
 void coap_setup(void);
 void endpoint_setup(void);
+
+//Estas são minhas
+
+void coap_get_path(coap_option_t opts[], uint8_t num_opts, char writebuf[]);
 
 #ifdef __cplusplus
 }

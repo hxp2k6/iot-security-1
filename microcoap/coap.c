@@ -254,8 +254,9 @@ char coap_dumpOptions(coap_option_t *opts, size_t numopt, char debug[])
     size_t i;
     int j;
     
-    //printf(" Options:\n");
-    strcat(debug, " Options:\n");
+    sprintf(temp, " Options:\n");
+    strcat(debug, temp);
+    //strcat(debug, " Options:\n");
     //for (i=0;i<numopt;i++)
     for (i=0;i<2;i++)
     {    
@@ -526,5 +527,19 @@ next:
 
 void coap_setup(void)
 {
+}
+
+void coap_get_path(coap_option_t opts[], uint8_t num_opts, char writebuf[]) {
+  int i;
+  char temp[300];
+  for (i = 0; i < num_opts; i++) {
+    if (opts[i].num == 11) {
+      //sprintf(temp, "HUE %d\n", my_coap_buffer_to_string(&temp, 300, &opts[i].buf));
+      strcat(writebuf, "Passou aqui");
+      strcat(writebuf, "\n");
+      strcat(temp, coap_buffer_to_string(&temp, 300, &opts[i].buf));
+      strcat(writebuf, temp);
+    }
+  }
 }
 
