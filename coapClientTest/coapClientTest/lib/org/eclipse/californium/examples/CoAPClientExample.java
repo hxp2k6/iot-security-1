@@ -93,14 +93,15 @@ public class CoAPClientExample {
 		Request request = new Request(Code.GET);
 		request.setPayload("Plain text");
 		OptionSet options = request.getOptions();
-		options.addOption(new Option(42, "12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849"
-					+ "5051525354555657585960616263646566676869707172737475767778798081828384858687888990"
-					+ "919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130"
-					+ "131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160"));
+		options.addOption(new Option(42, "{\"II\":\"2015-08-09T20:20:33Z\",\"ST\":{\"ACT\":\"GET\","
+				+ "\"RES\":\"coap://192.168.1.241/watch\",\"OB\":{\"NA\":\"2015-08-10T20:20:32Z\","
+				+ "\"NB\":\"2015-08-09T20:20:32Z\"}},\"ID\":\"ID_3412034b-b082-40bf-b3a1-defa82a8ccb4\","
+				+ "\"SK\":\"key\",\"IS\":\"testSOA\"}"));
 		request.setOptions(options);
 		request.setURI("coap://192.168.1.241:5683/watch");
 		try {
 			String response = request.send().waitForResponse().getPayloadString();
+			System.out.println(response);
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -111,7 +112,7 @@ public class CoAPClientExample {
 
 
 		
-		client.post(new CoapHandler() {
+		/*client.post(new CoapHandler() {
 			@Override public void onLoad(CoapResponse response) {
 				String content = response.getResponseText();
 				System.out.println("RESPONSE 4: " + content);
@@ -120,34 +121,7 @@ public class CoAPClientExample {
 			@Override public void onError() {
 				System.err.println("FAILED");
 			}
-		}, "abcdefg", 0);
-		
-		// wait for user
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		try { br.readLine(); } catch (IOException e) { }
-		
-		// observe
-
-		System.out.println("OBSERVE (press enter to exit)");
-		
-		CoapObserveRelation relation = client.observe(
-				new CoapHandler() {
-					@Override public void onLoad(CoapResponse response) {
-						String content = response.getResponseText();
-						System.out.println("NOTIFICATION: " + content);
-					}
-					
-					@Override public void onError() {
-						System.err.println("OBSERVING FAILED (press enter to exit)");
-					}
-				});
-		
-		// wait for user
-		try { br.readLine(); } catch (IOException e) { }
-		
-		System.out.println("CANCELLATION");
-		
-		relation.proactiveCancel();
+		}, "abcdefg", 0);*/
 	}
 }
 

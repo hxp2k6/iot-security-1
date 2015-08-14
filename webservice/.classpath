@@ -18,5 +18,6 @@
 	<classpathentry kind="lib" path="lib/jersey-bundle-1.19.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

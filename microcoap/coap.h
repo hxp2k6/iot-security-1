@@ -127,11 +127,15 @@ typedef enum
     COAP_ERR_BUFFER_TOO_SMALL = 9,
     COAP_ERR_UNSUPPORTED = 10,
     COAP_ERR_OPTION_DELTA_INVALID = 11,
+    
+    //Estes são meus
+    
+    COAP_ERR_PATH_INVALID = 12,
 } coap_error_t;
 
 ///////////////////////
 
-typedef int (*coap_endpoint_func)(coap_rw_buffer_t *scratch, const coap_packet_t *inpkt, coap_packet_t *outpkt, uint8_t id_hi, uint8_t id_lo);
+typedef int (*coap_endpoint_func)(coap_rw_buffer_t *scratch, const coap_packet_t *inpkt, coap_packet_t *outpkt, uint8_t id_hi, uint8_t id_lo, char *path, char *request);
 #define MAX_SEGMENTS 2  // 2 = /foo/bar, 3 = /foo/bar/baz
 typedef struct
 {
@@ -163,10 +167,15 @@ int coap_build(uint8_t *buf, size_t *buflen, const coap_packet_t *pkt);
 //void coap_dump(const uint8_t *buf, size_t buflen, bool bare);
 void coap_dump(const uint8_t *buf, size_t buflen, bool bare, char debug[]);
 int coap_make_response(coap_rw_buffer_t *scratch, coap_packet_t *pkt, const uint8_t *content, size_t content_len, uint8_t msgid_hi, uint8_t msgid_lo, const coap_buffer_t* tok, coap_responsecode_t rspcode, coap_content_type_t content_type);
-int coap_handle_req(coap_rw_buffer_t *scratch, const coap_packet_t *inpkt, coap_packet_t *outpkt);
+//int coap_handle_req(coap_rw_buffer_t *scratch, const coap_packet_t *inpkt, coap_packet_t *outpkt);
+int coap_handle_req(coap_rw_buffer_t *scratch, const coap_packet_t *inpkt, coap_packet_t *outpkt, const char *address, const char *request);
 void coap_option_nibble(uint32_t value, uint8_t *nibble);
 void coap_setup(void);
 void endpoint_setup(void);
+
+//Estas são minhas
+
+void coap_get_path(coap_option_t opts[], uint8_t num_opts, char writebuf[]);
 
 #ifdef __cplusplus
 }
